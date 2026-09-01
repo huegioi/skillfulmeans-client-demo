@@ -318,7 +318,6 @@ footer .cnt{font-size:12.5px;color:rgba(255,255,255,.65);font-variant-numeric:ta
 /* ---------- configurable links ---------- */
 const LINKS = [
   {key:'client',   label:'Client / prospect name', hint:'Personalizes the headlines', def:'', text:true},
-  {key:'builder',  label:'Campaign builder', hint:'app.skillfulmeans.life/curriculumdesigner', def:'https://app.skillfulmeans.life/curriculumdesigner'},
   {key:'claims',   label:'Claims Insight', hint:'app.skillfulmeans.life/claimsinsight — open a DEMO profile', def:'https://app.skillfulmeans.life/claimsinsight'},
   {key:'register', label:'Challenge registration', hint:'courses.skillfulmeans.life — Calm and Confident Mind', def:'https://courses.skillfulmeans.life/offers/JzJLjkKM/checkout'},
   {key:'challengeDay',label:'Challenge day page', hint:'courses.skillfulmeans.life/tn-challenge-day-3', def:'https://courses.skillfulmeans.life/tn-challenge-day-3'},
@@ -382,7 +381,7 @@ const STEPS = [
   cue:'Two or three matched programs is a campaign; twelve is a catalog.', time:'2–3 min'
 },
 {
-  act:"Live demo", title:"We build your campaign", dark:true, live:"builder",
+  act:"Live demo", title:"We build your campaign", dark:true,
   html:()=>`
     <div class="top"><span class="eyebrow">Live demo · Campaign builder</span><span class="pill mauve">Live screen</span></div>
     <div class="body">
