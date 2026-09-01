@@ -1,9 +1,0 @@
-{
-  "name": "skillfulmeans-client-demo",
-  "version": "1.0.0",
-  "private": true,
-  "description": "SkillfulMeans client demo — deck plus working platform walkthrough",
-  "main": "server.js",
-  "scripts": { "start": "node server.js" },
-  "engines": { "node": ">=18" }
-}
