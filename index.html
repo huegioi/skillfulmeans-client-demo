@@ -79,7 +79,25 @@ main#stage{grid-template-columns:minmax(0,1fr)}
 .slide .pill.lav{background:var(--lav);color:var(--plum)}
 .slide .pill.forest{background:var(--forest);color:#fff}
 .slide .body{padding:18px 44px 10px;display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:center;min-height:0;overflow:auto}
-.slide .body.one{grid-template-columns:1fr}
+.slide .body.one{grid-template-columns:minmax(0,1fr)}
+
+/* funding routes (the 'where the budget comes from' step) */
+/* auto rows stretch by default, which parks the cards far below the lead.
+   'safe' matters: once the content is taller than the body (phones), centring
+   would clip the headline off the top with no way to scroll back to it. */
+.slide .body:has(.fund){align-content:safe center;align-items:start;gap:26px}
+.fund{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:stretch;width:100%}
+.fund .r{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:12px;
+  padding:17px 18px 16px;display:flex;flex-direction:column;gap:7px;min-width:0}
+.fund .r .k{font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:700}
+.fund .r.a .k{color:var(--lime)}
+.fund .r.b .k{color:var(--coral)}
+.fund .r.c .k{color:var(--sky)}
+.fund .r.d .k{color:var(--mauve)}
+.fund .r .t{font-family:var(--serif);font-size:clamp(16px,1.45vw,20px);line-height:1.15;color:#fff}
+.fund .r .x{font-size:13px;line-height:1.5;color:rgba(255,255,255,.76);margin-top:auto}
+@media (max-width:1180px){.fund{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+@media (max-width:560px){.fund{grid-template-columns:minmax(0,1fr)}.fund .r{padding:14px 15px}}
 .slide h1{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.4vw,46px);line-height:1.08;margin:0 0 14px;text-wrap:balance;letter-spacing:-.01em}
 .slide h1 em{font-style:italic;font-weight:400}
 .slide h2{font-family:var(--serif);font-weight:500;font-size:clamp(20px,2vw,26px);margin:0 0 10px;text-wrap:balance}
@@ -670,6 +688,30 @@ const STEPS = [
   notes:`<p><em>"This is the report. Before and after on every marker, participation across the campaign, ready for your leadership team — and, if a broker brought us in, ready for the renewal meeting."</em></p><p>These are real reports. Region 16 for HR and school/mid-market buyers: <em>"Half the staff were burned out at the start. After one workshop and one challenge, three in ten."</em> Silver Hill for leadership buyers and healthcare brokers. Offer to send the PDF that matches their world in the follow-up.</p>`,
   cue:'For Leadership EQ engagements the ROI report lands within one month of the final session.', time:'1 min'
 },
+{
+  act:'Paying for it', title:'Where the budget comes from', dark:true,
+  html:()=>`
+    <div class="top"><span class="eyebrow">Paying for it</span><span class="pill lav">Funding routes</span></div>
+    <div class="body one">
+      <div>
+        <h1>Almost nobody has a line item called <em>mental fitness.</em></h1>
+        <p class="lead">Every campaign we run gets paid for out of money the organization already has. Which of these applies comes down to how ${who()} is funded.</p>
+      </div>
+      <div class="fund">
+        <div class="r a"><span class="k">Fully insured</span><span class="t">Group wellness dollars</span>
+          <span class="x">Most carriers set aside a wellness allowance per group at renewal, and most of it goes unspent. Usually the fastest yes here \u2014 the money is already earmarked for exactly this.</span></div>
+        <div class="r b"><span class="k">Self-funded</span><span class="t">The savings themselves</span>
+          <span class="x">When you pay claims directly, a prevented claim is money back. Claims Insight sizes the exposure first, so the campaign is measured against the spend it exists to reduce.</span></div>
+        <div class="r c"><span class="k">Either model</span><span class="t">Built into the PEPM</span>
+          <span class="x">Folded into the per-employee-per-month rate instead of raised as a separate purchase. It renews as a line item rather than coming back as a budget request every year.</span></div>
+        <div class="r d"><span class="k">Partnership</span><span class="t">Alongside other products</span>
+          <span class="x">Bundled with the other solutions already in the stack \u2014 sometimes part-funded by partners whose own numbers improve when engagement goes up.</span></div>
+      </div>
+    </div>
+    <div class="foot"><span>www.skillfulmeans.life</span><span>${pg()}</span></div>`,
+  notes:`<p>Ask before you present: <em>\"Are you fully insured or self-funded?\"</em> The answer decides which card you lead with, and you only need one of them to be true.</p><p><b>Fully insured \u2192 wellness dollars.</b> Most groups either don't know the allowance exists or don't know what's left in it. <em>\"Ask your broker what's sitting in your wellness fund this year.\"</em> It is often enough to cover a first campaign outright, which turns this from a budget request into a use-it-or-lose-it conversation.</p><p><b>Self-funded \u2192 the savings.</b> This is where Claims Insight earns its place: you are pricing the campaign against the exposure, not against a wellness budget. <em>\"A $7,400 campaign against a $431,000 exposure\"</em> is a different sentence than <em>\"a $7,400 campaign.\"</em></p><p><b>Either \u2192 the PEPM.</b> Worth saying out loud why it matters: a line item renews quietly, a purchase order has to be won again every single year.</p><p><b>Partnership.</b> Use when there are other vendors in the stack \u2014 their engagement numbers improve alongside ours, which sometimes opens co-funding.</p><p>Two cautions. Never promise savings: <em>\"funded by what it prevents\"</em> is a framing, not a guarantee, and the Claims Insight caveat applies here too. And if a broker raises a tax-advantaged reimbursement arrangement as the funding route, that structure is theirs to own \u2014 we work within whatever they already have in place and we don't advise on it.</p>`,
+  cue:'Ask which funding model they are on before you show options. Leading with the wrong card wastes the best answer.', time:'1\u20132 min'
+},
 {"act": "Close", "title": "What happens next", "img": "deck15", "notes": "<p>Three steps on the slide: we scope your campaign; you receive a customized proposal and baseline survey plan; kickoff workshop, then the 14-day challenge. Then ask for the small yes: <em>\"What's the smallest footprint that would make sense to test \u2014 one team, one workshop?\"</em> Offer two dates.</p><p>If \"we need to think about it\": <em>\"Totally understand. Is there a specific piece that feels unclear, or is it more about timing?\"</em> Timing \u2192 soft 30-day check-in. Unclear \u2192 free 20-minute walkthrough, or a free journey assessment for one team.</p>", "cue": "Within 24 hours: Heather sends the recap + one-pager (Day 1 of the cadence). Log the transcript in Notion.", "time": "2 min"}
 ];
 
@@ -706,7 +748,7 @@ function render(){
   $('#hdrAct').textContent=s.act;
   $('#hdrTitle').textContent=s.title;
   $('#hdrClient').innerHTML=client()?`Presenting to <b>${escapeHtml(client())}</b>`:'';
-  notes.innerHTML=`<div class="k">Presenter notes · Step ${i+1}</div><div class="say">${s.notes}</div>${s.cue?`<div class="cue"><b>Cue</b>${s.cue}</div>`:''}<div class="time">Suggested time: ${s.time||'—'} · Full run ≈ 27 min. HR-only short version: 1, 5, 9, 14–23, 26, 27. Broker version: 1, 5, 8, 14–16, 18, 24, 25, 26, 27.</div>`;
+  notes.innerHTML=`<div class="k">Presenter notes · Step ${i+1}</div><div class="say">${s.notes}</div>${s.cue?`<div class="cue"><b>Cue</b>${s.cue}</div>`:''}<div class="time">Suggested time: ${s.time||'—'} · Full run ≈ 29 min. HR-only short version: 1, 5, 9, 14–23, 26, 27, 28. Broker version: 1, 5, 8, 14–16, 18, 24, 25, 26, 27, 28.</div>`;
   rail.querySelectorAll('.step').forEach(b=>b.classList.toggle('active',+b.dataset.i===i));
   const active=rail.querySelector('.step.active'); if(active) active.scrollIntoView({block:'nearest'});
   $('#prevBtn').disabled=i===0; $('#nextBtn').disabled=i===STEPS.length-1;
