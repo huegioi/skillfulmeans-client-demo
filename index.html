@@ -600,14 +600,13 @@ const STEPS = [
     <div class="body">
       <div>
         <h1>What is ${client() ? client() : 'your team'} <em>up against?</em></h1>
-        <p>We start with the pain points — stress, burnout, disconnection in a hybrid team, difficult conversations — and match them to the workshops and challenges that address them.</p>
+        <p>The patterns we hear most. Tap the ones that sound like ${who()}.</p>
         <div class="chips" id="chips">${PAIN.map((x,i)=>`<button class="chip" data-i="${i}">${x.p}</button>`).join('')}</div>
-        <p style="font-size:13px;color:var(--ink-3)">Tap the challenges you're hearing about — the recommendation updates as you go.</p>
       </div>
-      <div class="rx" id="rx"><div class="k">Recommended programming</div><div class="empty">Select one or more pain points to see the matched workshop and follow-on challenge.</div></div>
+      <div class="rx" id="rx"><div class="k">Recommended programming</div><div class="empty">Tap a pain point to see the match.</div></div>
     </div>
     <div class="foot"><span>www.skillfulmeans.life</span><span>${pg()}</span></div>`,
-  notes:`<p>This is a conversation, not a slide. Ask: <em>"What are you hearing most from managers right now?"</em> Click the pain points as they name them — the recommendation builds in front of them.</p><p>Say the outcome, not the title: <em>"So for burnout we'd open with Beyond Burnout, and the recovery challenge is where the daily habits form."</em></p>`,
+  notes:`<p><b>Say it, don't show it:</b> <em>"We start with the pain points — stress, burnout, disconnection on a hybrid team, difficult conversations — and match them to the programming that addresses them."</em> The chips update the recommendation as you tap.</p><p>This is a conversation, not a slide. Ask: <em>"What are you hearing most from managers right now?"</em> Click the pain points as they name them — the recommendation builds in front of them.</p><p>Say the outcome, not the title: <em>"So for burnout we'd open with Beyond Burnout, and the recovery challenge is where the daily habits form."</em></p>`,
   cue:'Two or three matched programs is a campaign; twelve is a catalog.', time:'2–3 min'
 },
 {
@@ -617,13 +616,13 @@ const STEPS = [
     <div class="body">
       <div>
         <h1>We build ${client() ? client()+"’s" : "your"} campaign <em>with you.</em></h1>
-        <p>In the campaign builder we select the workshops and challenges that match what we just heard, set the sequence and dates, and generate the proposal — on this call, not next week.</p>
-        <ul class="clean lime"><li>Eight steps: assessment → impact → workshops → challenges → classes → leadership → incentives → review</li><li>Pricing and proposal generated from the plan — nothing to re-key</li><li>Launch emails and calendar invites created at the same time</li></ul>
+        <p>Matched to what we just heard, sequenced and priced — on this call, not next week.</p>
+        <ul class="clean lime"><li>Proposal generated from the plan — nothing to re-key</li><li>Launch emails and invites created at the same time</li></ul>
       </div>
       <div><div class="shot"><img src="${IMG.builder}" alt="app.skillfulmeans.life · Build Your Mental Fitness Campaign"><div class="cap">app.skillfulmeans.life · Build Your Mental Fitness Campaign</div></div></div>
     </div>
     <div class="foot"><span>www.skillfulmeans.life</span><span>${pg()}</span></div>`,
-  notes:`<p>Press <b>Open live</b> and build a real campaign from the pain points they just named. Two workshops and two challenges — the point is speed and fit, not breadth.</p><p>Narrate the click: <em>"Beyond Burnout for week three, the recovery challenge right behind it, and the proposal comes out of this the moment we agree."</em></p>`,
+  notes:`<p><b>Say it, don't show it:</b> the builder walks eight steps — assessment, impact, workshops, challenges, classes, leadership, incentives, review. Narrate them as you click; don't make them read a list.</p><p>Press <b>Open live</b> and build a real campaign from the pain points they just named. Two workshops and two challenges — the point is speed and fit, not breadth.</p><p>Narrate the click: <em>"Beyond Burnout for week three, the recovery challenge right behind it, and the proposal comes out of this the moment we agree."</em></p>`,
   cue:"Cmd/Alt-Tab back to this tab when done. The live tab stays open for the next step.", time:"3 min"
 },
 {"act": "Live demo", "title": "Launch kit: portal, emails, invites", "site": "hrportal", "eyebrow": "Live demo \u00b7 Before the first workshop", "h1": "Everything HR needs is already written.", "url": "app.skillfulmeans.life/clientportal \u2014 Lakeside Manufacturing", "notes": "<p>This is a working portal \u2014 scroll it, click the tabs. You're on <b>Emails</b>: announcement two weeks out, reminder two days out, follow-up after. Click a program to open its templates.</p><p><em>\"Leading up to the first workshop you get your portal. The templates live here, we also email them to you, and we send a calendar invite with the link. Promoting it is forward, forward, done.\"</em></p><p>Sample data \u2014 Lakeside Manufacturing, 412 employees. Use <b>Open live</b> for the client's real portal.</p>", "cue": "This is the \"easy lift\" moment. HR directors buy on how little work this is for them.", "time": "1\u20132 min", "siteTab": "email"},
@@ -637,13 +636,13 @@ const STEPS = [
     <div class="body">
       <div>
         <h1>Same drill. <em>Now the habit forms.</em></h1>
-        <p>A 14-day team challenge follows the workshop and turns the skill into daily practice. HR gets the same launch kit, and employees register in under a minute — free to participants.</p>
-        <ul class="clean mauve"><li>Sign up → look for the email → download the SkillfulMeans app (or use the web)</li><li>Daily videos, guided meditations, and tips for success</li><li>Team leaderboard and a coached discussion board</li></ul>
+        <p>Fourteen days that turn the skill into daily practice — free to participants.</p>
+        <ul class="clean mauve"><li>Daily videos, guided meditations, and tips</li><li>Team leaderboard and a coached discussion board</li></ul>
       </div>
       <div><div class="shot"><img src="${IMG.register}" alt="courses.skillfulmeans.life · Calm and Confident Mind 14-Day Challenge"><div class="cap">courses.skillfulmeans.life · Calm and Confident Mind 14-Day Challenge</div></div></div>
     </div>
     <div class="foot"><span>www.skillfulmeans.life</span><span>${pg()}</span></div>`,
-  notes:`<p><em>"After the workshop the team gets a challenge designed to integrate those skills. Same drill: templates in your portal, emailed to you, calendar invite with the registration link."</em> Open the live page and show how short the form is.</p>`,
+  notes:`<p><b>Say it, don't show it:</b> HR gets the same launch kit, and registration takes under a minute — sign up, look for the email, download the app or use the web.</p><p><em>"After the workshop the team gets a challenge designed to integrate those skills. Same drill: templates in your portal, emailed to you, calendar invite with the registration link."</em> Open the live page and show how short the form is.</p>`,
   cue:"This answers \"we tried wellness and it didn\u2019t stick.\" The challenge is the habit layer.", time:"1 min"
 },
 {"act": "Live demo", "title": "Inside the challenge: a day", "site": "day", "eyebrow": "Live demo \u00b7 Inside the challenge", "h1": "Five minutes a day, with your team.", "url": "courses.skillfulmeans.life/tn-challenge-day-3", "notes": "<p>Scroll this one all the way down \u2014 that's the point. Video at the top, then homework, then the discussion prompt, then what teammates actually posted.</p><p><em>\"That's a whole day. Five minutes, one change, one post. Fourteen of those and the habit is built \u2014 as a team, not alone.\"</em></p><p>Click the checkbox next to the homework to show how a participant marks the day complete. The comments underneath are what makes it stick: people see their colleagues doing it.</p>", "cue": "Brevity is the feature. Let the scroll do the talking.", "time": "2 min", "live": "challengeDay"},
@@ -654,13 +653,12 @@ const STEPS = [
     <div class="body">
       <div>
         <h1>Points for practice — and for <em>lifting each other up.</em></h1>
-        <p>Participants post daily, comment on teammates' posts, and earn points not just for completing activities but for being a supportive team player: commenting, encouraging, and writing posts others mark as inspiring.</p>
-        <ul class="clean mauve"><li>Each client gets its own space, challenges, leaderboard, and AI coach</li><li>Points for posting, for commenting, and for posts teammates mark "Inspired"</li><li>The winners are the people who made the team better, not just the most active</li></ul>
+        <ul class="clean mauve"><li>Each client gets its own space, challenges, and AI coach</li><li>Points for posting, for commenting, and for posts marked "Inspired"</li><li>The winners made the team better, not just the most activities</li></ul>
       </div>
       <div><div class="shots"><div class="shot"><img src="${IMG.feed}" alt="Community feed · posts, comments, "Inspired" reactions"><div class="cap">Community feed · posts, comments, "Inspired" reactions</div></div><div class="shot"><img src="${IMG.leaderboard}" alt="Leaderboard · weekly, monthly, all-time points"><div class="cap">Leaderboard · weekly, monthly, all-time points</div></div></div></div>
     </div>
     <div class="foot"><span>www.skillfulmeans.life</span><span>${pg()}</span></div>`,
-  notes:`<p>Open the live community and show the feed, then Leaderboard. The line that lands: <em>"The winners aren't the people who did the most activities. They're the people who were the best teammates — that's what the points reward."</em></p><p>The live view shows real member names. Present a demo or internal group's feed if you'd rather not show one client's people to another.</p>`,
+  notes:`<p><b>Say it, don't show it:</b> <em>"Participants post daily and comment on each other's posts, and they earn points not just for finishing activities but for being a supportive teammate — encouraging others, writing posts people mark as inspiring."</em></p><p>Open the live community and show the feed, then Leaderboard. The line that lands: <em>"The winners aren't the people who did the most activities. They're the people who were the best teammates — that's what the points reward."</em></p><p>The live view shows real member names. Present a demo or internal group's feed if you'd rather not show one client's people to another.</p>`,
   cue:"Names are blurred in these screenshots \u2014 the live site is not.", time:"2 min"
 },
 {"act": "Partners & data", "title": "The referral partner portal", "site": "brokerportal", "eyebrow": "For brokers \u00b7 Your portal", "h1": "Your whole book, in one place.", "url": "app.skillfulmeans.life/partner \u2014 Horizon Benefits Group", "notes": "<p><b>Broker audience only \u2014 skip to the next step for an HR-only call.</b></p><p>This is Alex Morgan's view at Horizon Benefits Group. Scroll and click: Dashboard shows what needs attention this week, My Clients shows every account they've referred and where it stands, Referral Toolkit is the co-branded leave-behinds and ready-to-send emails.</p><p>The pitch: <em>\"You make the introduction. We run discovery within 48 hours, build the proposal on that call, deliver everything, and hand you the participation and outcome data at renewal. Nothing lands on your desk.\"</em></p><p>Sample account \u2014 nothing real is exposed.</p>", "cue": "William's rule: no portal access on call one. Set the partner up on the second meeting, once they start referring.", "time": "2\u20133 min"},
@@ -672,20 +670,19 @@ const STEPS = [
     <div class="body">
       <div>
         <h1>The before and after, <em>in one report.</em></h1>
-        <p>At the end of the challenge we collect the short follow-up survey. At the end of the campaign — or annually — you receive a customized Value of Investment report: your numbers, not an industry average.</p>
+        <p>Your numbers, not an industry average.</p>
         <ul class="clean lime">
           <li>Baseline vs. post-campaign on every marker</li>
-          <li>Participation across workshops and challenges</li>
-          <li>Built for the leadership meeting and the renewal conversation — two real examples on the right</li>
+          <li>Built for the leadership meeting and the renewal</li>
         </ul>
       </div>
       <div class="cases">
-        <figure class="case"><img alt="Region 16 Schools case study" src="${IMG.r16}"><figcaption><b>Region 16 Schools · 57 staff</b> Mindfulness for Stress Reduction + The Calm and Confident Mind challenge. Burnout 50% → 30%. Concentration 50% → 90%. Focus 60% → 100%.</figcaption></figure>
-        <figure class="case"><img alt="Silver Hill Hospital Leadership EQ case study" src="${IMG.sh}"><figcaption><b>Silver Hill Hospital · 36 leaders</b> 3-part Leadership EQ series. +17.5% avg. resilience, +19% effective approach to difficult conversations, 4.42/5 satisfaction.</figcaption></figure>
+        <figure class="case"><img alt="Region 16 Schools case study" src="${IMG.r16}"><figcaption><b>Region 16 Schools · 57 staff</b> Burnout 50% → 30%. Concentration 50% → 90%.</figcaption></figure>
+        <figure class="case"><img alt="Silver Hill Hospital Leadership EQ case study" src="${IMG.sh}"><figcaption><b>Silver Hill Hospital · 36 leaders</b> +17.5% resilience. 4.42/5 satisfaction.</figcaption></figure>
       </div>
     </div>
     <div class="foot"><span>www.skillfulmeans.life · Real client results, 2025</span><span>${pg()}</span></div>`,
-  notes:`<p><em>"This is the report. Before and after on every marker, participation across the campaign, ready for your leadership team — and, if a broker brought us in, ready for the renewal meeting."</em></p><p>These are real reports. Region 16 for HR and school/mid-market buyers: <em>"Half the staff were burned out at the start. After one workshop and one challenge, three in ten."</em> Silver Hill for leadership buyers and healthcare brokers. Offer to send the PDF that matches their world in the follow-up.</p>`,
+  notes:`<p><b>Say it, don't show it:</b> the short follow-up survey lands at the end of the challenge; the VOI report at the end of the campaign or annually. Region 16 ran Mindfulness for Stress Reduction plus the Calm and Confident Mind challenge — focus also went 60% → 100%. Silver Hill ran the 3-part Leadership EQ series — difficult conversations improved 19%.</p><p><em>"This is the report. Before and after on every marker, participation across the campaign, ready for your leadership team — and, if a broker brought us in, ready for the renewal meeting."</em></p><p>These are real reports. Region 16 for HR and school/mid-market buyers: <em>"Half the staff were burned out at the start. After one workshop and one challenge, three in ten."</em> Silver Hill for leadership buyers and healthcare brokers. Offer to send the PDF that matches their world in the follow-up.</p>`,
   cue:'For Leadership EQ engagements the ROI report lands within one month of the final session.', time:'1 min'
 },
 {
@@ -695,21 +692,21 @@ const STEPS = [
     <div class="body one">
       <div>
         <h1>Almost nobody has a line item called <em>mental fitness.</em></h1>
-        <p class="lead">Every campaign we run gets paid for out of money the organization already has. Which of these applies comes down to how ${who()} is funded.</p>
+        <p class="lead">It gets paid for out of money ${who()} already has.</p>
       </div>
       <div class="fund">
         <div class="r a"><span class="k">Fully insured</span><span class="t">Group wellness dollars</span>
-          <span class="x">Most carriers set aside a wellness allowance per group at renewal, and most of it goes unspent. Usually the fastest yes here \u2014 the money is already earmarked for exactly this.</span></div>
+          <span class="x">The carrier allowance set at renewal \u2014 mostly unspent. Fastest yes.</span></div>
         <div class="r b"><span class="k">Self-funded</span><span class="t">The savings themselves</span>
-          <span class="x">When you pay claims directly, a prevented claim is money back. Claims Insight sizes the exposure first, so the campaign is measured against the spend it exists to reduce.</span></div>
+          <span class="x">A prevented claim is money back. Priced against the exposure.</span></div>
         <div class="r c"><span class="k">Either model</span><span class="t">Built into the PEPM</span>
-          <span class="x">Folded into the per-employee-per-month rate instead of raised as a separate purchase. It renews as a line item rather than coming back as a budget request every year.</span></div>
+          <span class="x">A line item that renews \u2014 not a purchase won again each year.</span></div>
         <div class="r d"><span class="k">Partnership</span><span class="t">Alongside other products</span>
-          <span class="x">Bundled with the other solutions already in the stack \u2014 sometimes part-funded by partners whose own numbers improve when engagement goes up.</span></div>
+          <span class="x">Bundled with the stack \u2014 sometimes part-funded by partners.</span></div>
       </div>
     </div>
     <div class="foot"><span>www.skillfulmeans.life</span><span>${pg()}</span></div>`,
-  notes:`<p>Ask before you present: <em>\"Are you fully insured or self-funded?\"</em> The answer decides which card you lead with, and you only need one of them to be true.</p><p><b>Fully insured \u2192 wellness dollars.</b> Most groups either don't know the allowance exists or don't know what's left in it. <em>\"Ask your broker what's sitting in your wellness fund this year.\"</em> It is often enough to cover a first campaign outright, which turns this from a budget request into a use-it-or-lose-it conversation.</p><p><b>Self-funded \u2192 the savings.</b> This is where Claims Insight earns its place: you are pricing the campaign against the exposure, not against a wellness budget. <em>\"A $7,400 campaign against a $431,000 exposure\"</em> is a different sentence than <em>\"a $7,400 campaign.\"</em></p><p><b>Either \u2192 the PEPM.</b> Worth saying out loud why it matters: a line item renews quietly, a purchase order has to be won again every single year.</p><p><b>Partnership.</b> Use when there are other vendors in the stack \u2014 their engagement numbers improve alongside ours, which sometimes opens co-funding.</p><p>Two cautions. Never promise savings: <em>\"funded by what it prevents\"</em> is a framing, not a guarantee, and the Claims Insight caveat applies here too. And if a broker raises a tax-advantaged reimbursement arrangement as the funding route, that structure is theirs to own \u2014 we work within whatever they already have in place and we don't advise on it.</p>`,
+  notes:`<p><b>Say it, don't show it:</b> the long version of each card \u2014 carriers set a wellness allowance per group at renewal and most goes unspent; a self-funded employer pays claims directly so a prevented claim is money back, sized by Claims Insight; the PEPM route folds it into the per-employee-per-month rate; partners sometimes part-fund because their own engagement numbers improve.</p><p>Ask before you present: <em>\"Are you fully insured or self-funded?\"</em> The answer decides which card you lead with, and you only need one of them to be true.</p><p><b>Fully insured \u2192 wellness dollars.</b> Most groups either don't know the allowance exists or don't know what's left in it. <em>\"Ask your broker what's sitting in your wellness fund this year.\"</em> It is often enough to cover a first campaign outright, which turns this from a budget request into a use-it-or-lose-it conversation.</p><p><b>Self-funded \u2192 the savings.</b> This is where Claims Insight earns its place: you are pricing the campaign against the exposure, not against a wellness budget. <em>\"A $7,400 campaign against a $431,000 exposure\"</em> is a different sentence than <em>\"a $7,400 campaign.\"</em></p><p><b>Either \u2192 the PEPM.</b> Worth saying out loud why it matters: a line item renews quietly, a purchase order has to be won again every single year.</p><p><b>Partnership.</b> Use when there are other vendors in the stack \u2014 their engagement numbers improve alongside ours, which sometimes opens co-funding.</p><p>Two cautions. Never promise savings: <em>\"funded by what it prevents\"</em> is a framing, not a guarantee, and the Claims Insight caveat applies here too. And if a broker raises a tax-advantaged reimbursement arrangement as the funding route, that structure is theirs to own \u2014 we work within whatever they already have in place and we don't advise on it.</p>`,
   cue:'Ask which funding model they are on before you show options. Leading with the wrong card wastes the best answer.', time:'1\u20132 min'
 },
 {"act": "Close", "title": "What happens next", "img": "deck15", "notes": "<p>Three steps on the slide: we scope your campaign; you receive a customized proposal and baseline survey plan; kickoff workshop, then the 14-day challenge. Then ask for the small yes: <em>\"What's the smallest footprint that would make sense to test \u2014 one team, one workshop?\"</em> Offer two dates.</p><p>If \"we need to think about it\": <em>\"Totally understand. Is there a specific piece that feels unclear, or is it more about timing?\"</em> Timing \u2192 soft 30-day check-in. Unclear \u2192 free 20-minute walkthrough, or a free journey assessment for one team.</p>", "cue": "Within 24 hours: Heather sends the recap + one-pager (Day 1 of the cadence). Log the transcript in Notion.", "time": "2 min"}
@@ -897,7 +894,7 @@ function renderTimeline(st){
 function wirePain(){
   const chips=slide.querySelectorAll('.chip'), rx=$('#rx');
   const sel=new Set();
-  const EMPTY='<div class="k">Recommended programming</div><div class="empty">Select one or more pain points to see the matched workshop and follow-on challenge.</div>';
+  const EMPTY='<div class="k">Recommended programming</div><div class="empty">Tap a pain point to see the match.</div>';
   chips.forEach(c=>c.addEventListener('click',()=>{
     const k=+c.dataset.i; sel.has(k)?sel.delete(k):sel.add(k); c.classList.toggle('on',sel.has(k));
     if(!sel.size){ rx.innerHTML=EMPTY; return; }
