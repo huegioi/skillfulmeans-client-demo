@@ -242,6 +242,32 @@ main#stage{grid-template-rows:auto 1fr}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
 
 .cases{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* step 26: the reports are the point of the slide, so they get the height.
+   The images are portrait (680x880), so height is the binding constraint —
+   a slim header buys far more report than any width change can. */
+.slide .body.vois{grid-template-rows:auto minmax(0,1fr);align-items:stretch;align-content:stretch;gap:14px;padding-bottom:6px}
+.vois .voihead{display:flex;align-items:baseline;justify-content:space-between;gap:14px 34px;flex-wrap:wrap}
+.vois .voihead h1{font-size:clamp(21px,2.15vw,30px);margin:0;flex:0 1 auto}
+.vois .voihead ul.clean{display:flex;gap:10px 22px;flex-wrap:wrap;margin:0}
+.vois .voihead ul.clean li{font-size:13px;color:rgba(255,255,255,.8)}
+.vois .voihead ul.clean li::before{margin-top:6px}
+.vois .cases{display:flex;justify-content:center;align-items:stretch;gap:20px;min-height:0;height:100%}
+.vois .case{height:100%;display:flex;flex-direction:column;min-height:0;min-width:0}
+.vois .case img{height:100%;width:100%;max-height:none;min-height:0;
+  object-fit:cover;object-position:top;cursor:zoom-in}
+.vois .case figcaption{font-size:12px;flex:none}
+@media (max-width:900px){
+  /* stacked and full width; the column flex would otherwise shrink the report
+     to a sliver, so the card goes back to block flow and the image carries
+     its own aspect ratio */
+  .slide .body.vois{display:block}
+  .vois .voihead{margin-bottom:14px}
+  .vois .cases{display:grid;grid-template-columns:minmax(0,1fr);height:auto;gap:16px}
+  .vois .case{display:block;height:auto;min-height:0}
+  .vois .case img{height:auto;width:100%;max-height:none;aspect-ratio:680/880;object-fit:cover}
+  .vois .voihead ul.clean li{font-size:12.5px}
+}
 .case{margin:0;background:#fff;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.15);box-shadow:0 18px 40px -26px rgba(0,0,0,.6)}
 .case img{display:block;width:100%;height:auto;max-height:44vh;object-fit:cover;object-position:top}
 .case figcaption{font-size:11.5px;line-height:1.4;color:var(--ink-2);padding:9px 11px;background:var(--paper)}
@@ -667,18 +693,17 @@ const STEPS = [
   act:'Partners & data', title:'Follow-up survey and Value of Investment report', dark:true, live:'report',
   html:()=>`
     <div class="top"><span class="eyebrow">Live demo · Measure</span><span class="pill mauve">Value of investment</span></div>
-    <div class="body">
-      <div>
+    <div class="body one vois">
+      <div class="voihead">
         <h1>The before and after, <em>in one report.</em></h1>
-        <p>Your numbers, not an industry average.</p>
         <ul class="clean lime">
-          <li>Baseline vs. post-campaign on every marker</li>
+          <li>Your numbers, not an industry average</li>
           <li>Built for the leadership meeting and the renewal</li>
         </ul>
       </div>
       <div class="cases">
-        <figure class="case"><img alt="Region 16 Schools case study" src="${IMG.r16}"><figcaption><b>Region 16 Schools · 57 staff</b> Burnout 50% → 30%. Concentration 50% → 90%.</figcaption></figure>
-        <figure class="case"><img alt="Silver Hill Hospital Leadership EQ case study" src="${IMG.sh}"><figcaption><b>Silver Hill Hospital · 36 leaders</b> +17.5% resilience. 4.42/5 satisfaction.</figcaption></figure>
+        <figure class="case"><img alt="Region 16 Schools case study" src="${IMG.r16}"><figcaption><b>Region 16 Schools · 57 staff</b> Mindfulness for Stress Reduction + Calm and Confident Mind</figcaption></figure>
+        <figure class="case"><img alt="Silver Hill Hospital Leadership EQ case study" src="${IMG.sh}"><figcaption><b>Silver Hill Hospital · 36 leaders</b> 3-part Leadership EQ series</figcaption></figure>
       </div>
     </div>
     <div class="foot"><span>www.skillfulmeans.life · Real client results, 2025</span><span>${pg()}</span></div>`,
@@ -759,6 +784,7 @@ function render(){
     return `<button class="btn live" data-key="${k}"><span class="dot"></span><span>Open live: ${meta.label}</span></button>`;}).join('');
   $('#liveBtns').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>openLive(b.dataset.key)));
   if(s.interactive==='pain') wirePain();
+  slide.querySelectorAll('.case img').forEach(im=>im.addEventListener('click',()=>lightbox(im.src,im.alt)));
   if(slide.querySelector('.shot')){ slide.querySelector('.body').classList.add('shotwide'); slide.querySelectorAll('.shot img').forEach(im=>im.addEventListener('click',()=>lightbox(im.src,im.alt))); }
   slide.scrollTop=0;
 }
