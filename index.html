@@ -358,7 +358,7 @@ main#stage{grid-template-rows:auto 1fr}
    into it survive going back a slide. Shown or hidden, never rebuilt. */
 #liveframe{grid-row:2}
 .siteframe .vp.lf{overflow:hidden}
-#lfIframe{width:100%;height:100%;border:0;display:block;background:#fff}
+.vp.lf iframe{width:100%;height:100%;border:0;display:block;background:#fff}
 
 /* ---------- notes drawer ---------- */
 aside#notes{background:var(--paper);border-left:1px solid var(--line);overflow:hidden auto;padding:0;opacity:0;transition:opacity .2s}
@@ -546,7 +546,7 @@ footer .cnt{font-size:12.5px;color:rgba(255,255,255,.65);font-variant-numeric:ta
     <section class="slide sitepage" id="liveframe" hidden>
       <div class="sitetop"><span class="eyebrow"></span><h2></h2></div>
       <div class="siteframe"><div class="bar"><i></i><i></i><i></i><span id="lfUrl"></span><em>Live site · type real numbers</em></div>
-      <div class="vp lf"><iframe id="lfIframe" title="SkillfulMeans ROI engine" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
+      <div class="vp lf"></div></div>
     </section></main>
 
   <aside id="notes" aria-label="Presenter notes"></aside>
@@ -594,7 +594,7 @@ const DOCS = {
 
 const LINKS = [
   {key:'client',   label:'Client / prospect name', hint:'Personalizes the headlines', def:'', text:true},
-  {key:'claims',   label:'Claims Insight', hint:'app.skillfulmeans.life/claimsinsight — open a DEMO profile', def:'https://app.skillfulmeans.life/claimsinsight'},
+  {key:'claims',   label:'Claims Insight', hint:'app.skillfulmeans.life/claimsinsight — embedded live on the proof step; open a DEMO profile', def:'https://app.skillfulmeans.life/claimsinsight'},
   {key:'register', label:'Challenge registration', hint:'courses.skillfulmeans.life — Calm and Confident Mind', def:'https://courses.skillfulmeans.life/offers/JzJLjkKM/checkout'},
   {key:'challengeDay',label:'Challenge day page', hint:'courses.skillfulmeans.life/tn-challenge-day-3', def:'https://courses.skillfulmeans.life/tn-challenge-day-3'},
   {key:'challenge',label:'Challenge community', hint:'courses.skillfulmeans.life — discussion board', def:'https://courses.skillfulmeans.life/products/communities/v2/skillfulmeans/circle/bdbe36be-7f1f-4f42-afe6-6dd72885b422?type=forum'},
@@ -878,6 +878,13 @@ const STEPS = [
   cue:'Type their numbers, not yours. A prospect watching their own headcount produce a figure is the moment this slide exists for.', time:'3–4 min'
 },
 {
+  act:'The proof', title:'Read the claims live', frame:'claims', live:'claims',
+  eyebrow:'The proof · Claims Insight', h1:'Where the money is actually going.',
+  url:'app.skillfulmeans.life/claimsinsight',
+  notes:`<p><b>This is the real Claims Insight, live.</b> Open a <b>DEMO-tagged profile only</b> — every other profile on this screen is a real client's claims data, and this is a shared screen. Check which profile is loaded before you advance to this step, not after.</p><p>Walk it the same way as the replica: the de-identified extract at the top, the category table, then the line that matters — <em>"this much of the spend traces to preventable stress."</em> Then the two boxes underneath: where the leverage is, and how to use it in the room.</p><p><b>Sign-in.</b> The app needs a login, and a page inside a frame usually doesn't share the session from your other tabs. Before the call, land on this step and sign in <em>inside the frame</em> once; it then stays signed in for the run. If it ever shows the login screen mid-call, the <b>Open live</b> button opens the same page in its own tab where you are already signed in.</p><p>Every number here is a directional estimate from published research, not an actuarial finding — say so out loud, same as on the replica.</p>`,
+  cue:'DEMO profile. Check before you advance, not after.', time:'2–3 min'
+},
+{
   act:'The proof', title:'Predicted before kickoff, measured after', dark:false,
   html:()=>`
     <div class="top"><span class="eyebrow">The proof · The measurement loop</span><span class="pill">How it works</span></div>
@@ -961,8 +968,13 @@ function render(){
     slide.hidden=true; lf.hidden=false;
     lf.querySelector('.eyebrow').textContent=s.eyebrow||''; lf.querySelector('h2').textContent=s.h1||'';
     $('#lfUrl').textContent=s.url||'';
-    const fr=$('#lfIframe'), want=cfg[s.frame]||'';
+    /* one iframe per key, created on first visit and then only shown or hidden -
+       a hidden iframe keeps its page, so typed numbers and sign-ins survive */
+    const host=lf.querySelector('.vp.lf'), want=cfg[s.frame]||'';
+    let fr=host.querySelector(`iframe[data-key="${s.frame}"]`);
+    if(!fr){ fr=document.createElement('iframe'); fr.dataset.key=s.frame; fr.title=s.title; fr.referrerPolicy='no-referrer-when-downgrade'; host.appendChild(fr); }
     if(fr.dataset.src!==want){ fr.src=want; fr.dataset.src=want; }
+    host.querySelectorAll('iframe').forEach(f=>f.hidden=(f!==fr));
     slide.innerHTML='';
   }
   else { lf.hidden=true; slide.hidden=false; }
