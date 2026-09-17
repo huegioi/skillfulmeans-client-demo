@@ -82,6 +82,22 @@ main#stage{grid-template-columns:minmax(0,1fr)}
 .slide .body{padding:18px 44px 10px;display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:center;min-height:0;overflow:auto}
 .slide .body.one{grid-template-columns:minmax(0,1fr)}
 
+/* six problems / six skills (replaces deck slides 6 and 7) */
+.slide .body.sixwrap{align-content:safe center;align-items:start;gap:22px}
+.sixhead h1{margin-bottom:8px}
+.sixhead .lead{margin:0;max-width:60ch}
+.six{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;width:100%}
+.sx{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 24px 22px;min-height:clamp(150px,19vh,210px);
+  display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-width:0;border-top:6px solid var(--coral)}
+.sx b{font-family:var(--serif);font-weight:500;font-size:clamp(21px,1.9vw,29px);line-height:1.15;color:var(--ink);text-wrap:balance}
+.sx span{font-size:clamp(15px,1.25vw,18.5px);line-height:1.45;color:var(--ink-2);display:grid;grid-template-columns:18px 1fr;gap:6px}
+.sx span::before{content:"\2192";color:var(--ink-3);font-weight:700}
+.sx.a{border-top-color:var(--coral)}.sx.b{border-top-color:var(--sky)}.sx.c{border-top-color:var(--mauve)}
+.sx.d{border-top-color:var(--forest)}.sx.e{border-top-color:#2d4a7a}.sx.f{border-top-color:var(--plum)}
+@media (max-width:1180px){.six{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.six{grid-template-columns:minmax(0,1fr);gap:10px}.sx{padding:14px 15px}.sx b{font-size:19px}.sx span{font-size:15px}}
+@media (max-height:800px){.slide .body.sixwrap{gap:14px}.six{gap:10px}.sx{padding:13px 16px 12px;gap:6px;min-height:0}.sx b{font-size:clamp(19px,1.7vw,24px)}.sx span{font-size:clamp(14px,1.1vw,16px)}}
+
 /* funding routes (the 'where the budget comes from' step) */
 /* auto rows stretch by default, which parks the cards far below the lead.
    'safe' matters: once the content is taller than the body (phones), centring
@@ -678,8 +694,28 @@ const STEPS = [
 {"act": "The deck", "title": "Built by a clinician \u2014 William", "img": "deck3", "notes": "<p>Clinical health psychologist, researcher at Mass General (Harvard teaching hospital), former fully ordained Buddhist monk. Land the clear line: <em>\"We build skills. When clinical care is needed, we help route people to treatment and to the EAP \u2014 we make the EAP more used, not less.\"</em></p>", "cue": "Pre-empts the \"we already have an EAP\" objection before it comes up.", "time": "45 sec"},
 {"act": "The deck", "title": "What is mental fitness?", "img": "deck4", "notes": "<p><em>\"Like going to the gym \u2014 for your team's mental health.\"</em> Don't read the four bullets; pick the one that matches what they told you on the call.</p>", "cue": "", "time": "30 sec"},
 {"act": "The deck", "title": "Why is mental fitness important?", "img": "deck5", "notes": "<p>Pick one number. For HR: <em>\"About $780 to $1,200 per employee per year is walking out the door in preventable stress costs.\"</em> For a broker: <em>\"Prevention returns $6.30 per dollar \u2014 over 50% more than reactive support. That's the story you get to tell your clients.\"</em></p>", "cue": "Sources on the slide: Goh, Pfeffer & Zenios (2015); Deloitte (2024).", "time": "1 min"},
-{"act": "The deck", "title": "How do we address preventative mental health?", "img": "deck6", "notes": "<p>Six challenges, and what those risk factors erode. Ask: <em>\"Which two of these are you hearing most from managers right now?\"</em> \u2014 remember the answer for Discovery.</p>", "cue": "", "time": "45 sec"},
-{"act": "The deck", "title": "How we address these", "img": "deck7", "notes": "<p>Problem \u2192 solution, but only the rows they named. <em>\"Burnout: emotional resilience, recovery habits, cognitive function. Hybrid strain: virtual team building with collaboration exercises.\"</em></p>", "cue": "", "time": "45 sec"},
+{
+  act:"The deck", title:"The problems, and what we build against them", dark:false,
+  html:()=>`
+    <div class="top"><span class="eyebrow">The deck · What we address</span><span class="pill">Six problems, six skills</span></div>
+    <div class="body one sixwrap">
+      <div class="sixhead">
+        <h1>Six problems we hear everywhere. <em>Six skills that answer them.</em></h1>
+        <p class="lead">Each of these is a skill gap before it is a wellness problem — and skills can be taught.</p>
+      </div>
+      <div class="six">
+        <div class="sx a"><b>Burnout &amp; chronic stress</b><span>Recovery habits and emotional resilience</span></div>
+        <div class="sx b"><b>Disconnection &amp; low morale</b><span>Connection, recognition and team alignment</span></div>
+        <div class="sx c"><b>Remote &amp; hybrid strain</b><span>Belonging when the team is spread out</span></div>
+        <div class="sx d"><b>Communication &amp; collaboration</b><span>Listening skills and emotional regulation</span></div>
+        <div class="sx e"><b>Focus &amp; productivity</b><span>Attention training and a settled nervous system</span></div>
+        <div class="sx f"><b>Leadership &amp; change fatigue</b><span>Cognitive flexibility and leadership EQ</span></div>
+      </div>
+    </div>
+    <div class="foot"><span>www.skillfulmeans.life</span><span>${pg()}</span></div>`,
+  notes:`<p><b>Say it, don't show it:</b> one slide now does the work of two. Six problems on the left of each card, the skill we build on the right. The old slide 6 listed the same six problems with nothing beside them, and the old slide 7 repeated them with solutions.</p><p>Ask: <em>"Which two of these are you hearing most from managers right now?"</em> — and remember the answer for Discovery, where the same six appear as chips and produce the matching programs.</p><p>Read only the rows they named: <em>"Burnout — recovery habits and emotional resilience. Hybrid strain — belonging when the team is spread out."</em> The line under the headline is the thesis of the whole company: a skill gap before it is a wellness problem, and skills can be taught.</p>`,
+  cue:"Don't read all six. Two or three, chosen by what they said, is a conversation; six is a list.", time:"1 min"
+},
 {"act": "The deck", "title": "Our approach", "img": "deck8", "notes": "<p>Four pillars: Workshops introduce; Challenges practice and integrate; Coaching &amp; Leadership EQ integrates systemically; Incentives reinforce. The stat: <em>\"Positive emotions spread through a team like behaviors do. That's why we work with teams, not individuals.\"</em></p>", "cue": "", "time": "45 sec"},
 {"act": "The deck", "title": "Our team-based approach", "img": "deck9", "notes": "<p><em>\"A workshop opens the door. The challenge walks people through it, every day for two weeks, as a team. Leadership training means the change is modeled from the top.\"</em> Then: <em>\"One-off workshops don't stick because there's no habit layer \u2014 the challenge is the habit layer.\"</em></p>", "cue": "This answers \"we tried wellness and it didn't stick\" before it's asked.", "time": "45 sec"},
 {"act": "The deck", "title": "Increase participation. Increase results.", "img": "deck11", "notes": "<p>Raffle prizes, challenge prizes, leaderboard grand prizes. Sample digital box $75, physical box $100. <em>\"We already have the participation data, so nothing for you to compile \u2014 we ship the boxes.\"</em></p>", "cue": "Thirty seconds unless they ask. Boxes are the closer, not the pitch.", "time": "30 sec"},
