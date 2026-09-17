@@ -42,6 +42,7 @@ header .title{font-family:var(--serif);font-size:17px;white-space:nowrap;overflo
 header .spacer{flex:1}
 header .client{font-size:13px;color:rgba(255,255,255,.7)}
 header .client b{color:#fff;font-weight:500}
+header .mode{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;background:var(--lav);color:var(--plum);border-radius:999px;padding:4px 10px;white-space:nowrap}
 .iconbtn{background:transparent;border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:999px;padding:6px 12px;font-size:12.5px;letter-spacing:.02em;display:inline-flex;gap:6px;align-items:center}
 .iconbtn:hover{background:rgba(255,255,255,.08)}
 .iconbtn kbd{font:inherit;font-size:10.5px;opacity:.55;border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:0 4px}
@@ -166,33 +167,33 @@ main#stage{grid-template-columns:minmax(0,1fr)}
 .rx .prow b{font-weight:500;font-family:var(--serif);font-size:15px;line-height:1.25;display:block}
 .rx .prow .sub{display:block;color:var(--ink-2);font-size:12.5px;line-height:1.4;margin-top:4px}
 
-/* live-demo timeline strip - the sample 90-day campaign */
+/* journey stage label above the live-demo slides */
 main#stage{grid-template-rows:auto 1fr}
 #slide{grid-row:2}
-#tl{grid-row:1;width:min(100%,1240px);background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.11);border-radius:10px;padding:9px 16px 12px;margin-bottom:10px}
-#tl .r1{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-#tl .k{font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);white-space:nowrap}
-#tl .now{font-size:12px;font-weight:700;color:#2b1a25;background:var(--coral);border-radius:999px;padding:3px 12px;white-space:nowrap;line-height:1.35}
-#tl .now.plain{background:transparent;color:rgba(255,255,255,.78);padding:3px 0;font-weight:500;letter-spacing:.01em}
-#tl .day{margin-left:auto;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--mauve);white-space:nowrap;font-variant-numeric:tabular-nums}
-#tl .track{display:flex;gap:7px;align-items:flex-end}
-#tl .ph{min-width:118px;display:flex;flex-direction:column;gap:4px}
-#tl .ph b{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.38);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#tl .ph em{font-style:normal;font-size:11.5px;color:rgba(255,255,255,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
-#tl .ph.done b,#tl .ph.done em{color:rgba(255,255,255,.62)}
-#tl .ph.on b{color:var(--mauve)}
-#tl .ph.on em{color:#fff;font-weight:500}
-#tl .bar{position:relative;height:6px;border-radius:3px;background:rgba(255,255,255,.13)}
-#tl .ph.done .bar{background:rgba(255,255,255,.3)}
-#tl .ph.on .bar{background:rgba(232,134,106,.28)}
-#tl .fill{position:absolute;left:0;top:0;bottom:0;background:var(--coral);border-radius:3px}
-#tl .ms{position:absolute;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--plum-3);box-shadow:0 0 0 1.5px rgba(255,255,255,.4);cursor:help}
-#tl .ms.done{background:#fff;box-shadow:0 0 0 1.5px rgba(255,255,255,.55)}
-#tl .ms.at{width:13px;height:13px;margin:-6.5px 0 0 -6.5px;background:var(--coral);box-shadow:0 0 0 3px rgba(232,134,106,.3)}
-#tl .pin{position:absolute;top:-8px;width:3px;height:22px;margin-left:-1.5px;background:var(--coral);border-radius:2px;box-shadow:0 0 0 2px rgba(51,21,42,.7)}
-@media (max-width:1040px){#tl .ph em{display:none}#tl .ph{min-width:92px}}
-@media (max-width:800px){#tl .ph b{display:none}#tl .ph{min-width:40px}#tl .r1{margin-bottom:7px}}
-@media (max-height:840px){#tl{padding:7px 14px 9px;margin-bottom:8px}#tl .r1{margin-bottom:7px}#tl .ph em{display:none}}
+#tl{grid-row:1;width:min(100%,1240px);display:flex;align-items:baseline;gap:16px;padding:2px 8px 10px}
+#tl .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);white-space:nowrap}
+#tl .stage{font-family:var(--serif);font-size:clamp(20px,1.8vw,25px);color:#fff;letter-spacing:-.01em}
+@media (max-height:840px){#tl{padding-bottom:7px}}
+
+/* screen-only steps: the screenshot is the slide */
+.slide .body.screen{display:block;grid-template-columns:minmax(0,1fr);padding:14px 32px 10px;overflow:auto}
+.slide .body.screen.fit{display:grid;grid-template-rows:minmax(0,1fr);align-items:stretch;align-content:stretch}
+.screen.fit .shot{display:flex;flex-direction:column;min-height:0;max-width:1180px;margin:0 auto;width:100%}
+.screen.fit .shot img{flex:1;min-height:0;max-height:none;width:100%;object-fit:contain;object-position:top;background:var(--paper)}
+.screen .shots{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;max-width:1180px;margin:0 auto}
+.screen .shots .shot img{max-height:none}
+.mail{max-width:780px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  box-shadow:0 18px 40px -26px rgba(68,29,55,.5);position:relative}
+.mail .mh{padding:16px 24px;background:var(--cream-2);border-bottom:1px solid var(--line);display:grid;gap:5px}
+.mail .mh .row{display:grid;grid-template-columns:64px 1fr;gap:10px;font-size:13px;color:var(--ink-2)}
+.mail .mh .row b{color:var(--ink);font-weight:500}
+.mail .samp{position:absolute;top:14px;right:16px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.mail .mb{padding:22px 26px 22px;font-size:clamp(15px,1.2vw,17px);line-height:1.6}
+.mail .mb p{margin:0 0 13px;max-width:none;color:var(--ink);font-size:inherit}
+.mail .cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:16px 0 18px}
+.mail .cta a{background:var(--plum);color:#fff;border-radius:8px;padding:9px 16px;font-weight:500;font-size:14px}
+.mail .cta span{font-size:13px;color:var(--ink-2)}
+@media (max-width:560px){.slide .body.screen{padding:10px 12px 8px}.mail .mh{padding:12px 14px}.mail .mb{padding:16px 16px}.mail .samp{position:static;margin-top:4px}}
 
 /* mock screens */
 .mock{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 18px 40px -26px rgba(68,29,55,.5);font-size:13px}
@@ -377,6 +378,11 @@ footer .cnt{font-size:12.5px;color:rgba(255,255,255,.65);font-variant-numeric:ta
 #settings .row .btn{border-color:var(--plum);color:var(--plum)}
 #settings .row .btn.primary{background:var(--plum);color:#fff}
 #settings .note{font-size:12px;color:var(--ink-3)}
+#settings .mode{display:grid;grid-template-columns:190px 1fr;gap:12px;align-items:center;padding:10px 0 12px;font-size:13.5px}
+#settings .mode span small{display:block;color:var(--ink-3);font-size:11.5px}
+#settings .seg{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;width:max-content;max-width:100%}
+#settings .seg button{border:0;background:#fff;color:var(--ink-2);padding:8px 14px;font-size:13px}
+#settings .seg button.on{background:var(--plum);color:#fff}
 
 /* help toast */
 #toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:#fff;color:var(--plum);border-radius:999px;padding:9px 16px;font-size:13px;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .2s;z-index:60}
@@ -439,10 +445,8 @@ footer .cnt{font-size:12.5px;color:rgba(255,255,255,.65);font-variant-numeric:ta
 /* ---------- phones ---------- */
 @media (max-width:560px){
   #tl .k{display:none}
-  #tl .r1{flex-wrap:wrap;gap:8px}
-  #tl{padding:8px 12px 10px}
-  #tl .now{font-size:12.5px}
-  #tl .day{font-size:11px}
+  #tl{padding:2px 4px 8px}
+  #tl .stage{font-size:19px}
   header{padding:0 10px;gap:9px}
   header .logo{height:16px}
   header .act{display:none}
@@ -504,6 +508,7 @@ footer .cnt{font-size:12.5px;color:rgba(255,255,255,.65);font-variant-numeric:ta
     <div class="crumb"><span class="act" id="hdrAct"></span><span class="title" id="hdrTitle"></span></div>
     <div class="spacer"></div>
     <span class="client" id="hdrClient"></span>
+    <span class="mode" id="hdrMode" hidden>Client mode</span>
     <button class="iconbtn" id="notesToggle"><span class="lbl">Notes</span> <kbd>N</kbd></button>
     <button class="iconbtn" id="fsToggle"><span class="lbl">Full screen</span> <kbd>F</kbd></button>
     <button class="iconbtn" id="setToggle"><span class="lbl">Links &amp; setup</span> <kbd>S</kbd></button>
@@ -534,6 +539,8 @@ footer .cnt{font-size:12.5px;color:rgba(255,255,255,.65);font-variant-numeric:ta
   <div class="panel">
     <h3 id="setH">Links &amp; setup</h3>
     <p class="hint">Paste the live platform links once. Each step's <b>Open live screen</b> button sends that page to a single "SkillfulMeans Live" browser tab, so the whole demo is two tabs: this one and the platform. Links are remembered on this computer.</p>
+    <div class="mode"><span>Audience<small>Client mode hides the three broker steps from the list, the count and the arrow keys</small></span>
+      <div class="seg"><button data-mode="full" id="modeFull">Broker · full run</button><button data-mode="client" id="modeClient">Client · no broker steps</button></div></div>
     <div id="setFields"></div>
     <div class="row">
       <span class="note">Tip: sign in to the platform in your browser before the call so the live tab opens straight to the screen.</span>
@@ -675,15 +682,13 @@ const STEPS = [
 {"act": "The deck", "title": "How we address these", "img": "deck7", "notes": "<p>Problem \u2192 solution, but only the rows they named. <em>\"Burnout: emotional resilience, recovery habits, cognitive function. Hybrid strain: virtual team building with collaboration exercises.\"</em></p>", "cue": "", "time": "45 sec"},
 {"act": "The deck", "title": "Our approach", "img": "deck8", "notes": "<p>Four pillars: Workshops introduce; Challenges practice and integrate; Coaching &amp; Leadership EQ integrates systemically; Incentives reinforce. The stat: <em>\"Positive emotions spread through a team like behaviors do. That's why we work with teams, not individuals.\"</em></p>", "cue": "", "time": "45 sec"},
 {"act": "The deck", "title": "Our team-based approach", "img": "deck9", "notes": "<p><em>\"A workshop opens the door. The challenge walks people through it, every day for two weeks, as a team. Leadership training means the change is modeled from the top.\"</em> Then: <em>\"One-off workshops don't stick because there's no habit layer \u2014 the challenge is the habit layer.\"</em></p>", "cue": "This answers \"we tried wellness and it didn't stick\" before it's asked.", "time": "45 sec"},
-{"act": "The deck", "title": "We measure what matters", "img": "deck10", "notes": "<p>Short baseline survey, short follow-up survey, customized VOI report. Name the instruments: <em>\"Brief, validated instruments \u2014 WHO-5 wellbeing, UWES-3 engagement \u2014 not a made-up quiz.\"</em> Say \"aggregate\" and \"confidential\" out loud. You'll show them the real thing in a few minutes.</p>", "cue": "", "time": "1 min"},
 {"act": "The deck", "title": "Increase participation. Increase results.", "img": "deck11", "notes": "<p>Raffle prizes, challenge prizes, leaderboard grand prizes. Sample digital box $75, physical box $100. <em>\"We already have the participation data, so nothing for you to compile \u2014 we ship the boxes.\"</em></p>", "cue": "Thirty seconds unless they ask. Boxes are the closer, not the pitch.", "time": "30 sec"},
 {"act": "The deck", "title": "A sample 90-day campaign", "img": "deck12", "notes": "<p><em>\"Built around your team, not a package.\"</em> Weeks 1\u20132 scope &amp; baseline. Week 3 kickoff workshop. Weeks 4\u20135 the challenge. Weeks 6\u201312 sustain and measure.</p>", "cue": "", "time": "45 sec"},
 {"act": "The deck", "title": "What does it take to move the needle?", "img": "deck13", "notes": "<p>Only if they're past \"is this real\" and into \"what would this cost us.\" <em>\"Most teams start at Foundation \u2014 two workshops and one challenge gets you your first measurable movement.\"</em></p>", "cue": "Quote from the rate card in the campaign builder, never from memory.", "time": "1 min"},
-{"act": "Live demo", "title": "Let's take a look at the live demo", "img": "deck14", "notes": "<p>Transition: <em>\"Let me show you what that actually looks like for your team \u2014 this is the real thing, not slides.\"</em></p><p>From here on, every screen is a working page you can scroll and click. The one's built with sample data \u2014 Lakeside Manufacturing for HR, Horizon Benefits Group for brokers \u2014 so nothing real is exposed on a prospect call. Where a live link is set, the button in the bottom right opens the real platform in a second tab.</p>", "cue": "", "time": "15 sec"},
 {
-  act:'Live demo', title:'Discovery: what is your team facing?', dark:false, interactive:'pain',
+  act:'Discovery', title:'Discovery: what is your team facing?', dark:false, interactive:'pain',
   html:()=>`
-    <div class="top"><span class="eyebrow">Live demo · Discovery</span><span class="pill">Together, on this call</span></div>
+    <div class="top"><span class="eyebrow">Discovery</span><span class="pill">Together, on this call</span></div>
     <div class="body">
       <div>
         <h1>What is ${client() ? client() : 'your team'} <em>up against?</em></h1>
@@ -696,64 +701,78 @@ const STEPS = [
   notes:`<p><b>Say it, don't show it:</b> <em>"We start with the pain points — stress, burnout, disconnection on a hybrid team, difficult conversations — and match them to the programming that addresses them."</em> The chips update the recommendation as you tap.</p><p>This is a conversation, not a slide. Ask: <em>"What are you hearing most from managers right now?"</em> Click the pain points as they name them — the recommendation builds in front of them.</p><p>Say the outcome, not the title: <em>"So for burnout we'd open with Beyond Burnout, and the recovery challenge is where the daily habits form."</em></p>`,
   cue:'Two or three matched programs is a campaign; twelve is a catalog.', time:'2–3 min'
 },
+{"act": "Discovery", "title": "Let's take a look at a demo together", "img": "deck14", "notes": "<p>Transition: <em>\"Let's take a look at a demo together \u2014 I'll walk you through exactly what your people see, in the order they see it.\"</em></p><p>From here on, every screen is a working page you can scroll and click. The one's built with sample data \u2014 Lakeside Manufacturing for HR, Horizon Benefits Group for brokers \u2014 so nothing real is exposed on a prospect call. Where a live link is set, the button in the bottom right opens the real platform in a second tab.</p>", "cue": "", "time": "15 sec"},
 {
-  act:"Live demo", title:"We build your campaign", dark:true,
+  act:"Discovery", title:"Let's build your campaign", dark:true,
   html:()=>`
-    <div class="top"><span class="eyebrow">Live demo · Campaign builder</span><span class="pill mauve">Live screen</span></div>
+    <div class="top"><span class="eyebrow">Discovery · Campaign builder</span><span class="pill mauve">Live screen</span></div>
     <div class="body">
       <div>
-        <h1>We build ${client() ? client()+"’s" : "your"} campaign <em>with you.</em></h1>
+        <h1>Let's build ${client() ? client()+"’s" : "your"} <em>campaign.</em></h1>
         <p>Matched to what we just heard, sequenced and priced — on this call, not next week.</p>
         <ul class="clean lime"><li>Proposal generated from the plan — nothing to re-key</li><li>Launch emails and invites created at the same time</li></ul>
       </div>
       <div><div class="shot"><img src="${IMG.builder}" alt="app.skillfulmeans.life · Build Your Mental Fitness Campaign"><div class="cap">app.skillfulmeans.life · Build Your Mental Fitness Campaign</div></div></div>
     </div>
     <div class="foot"><span>www.skillfulmeans.life</span><span>${pg()}</span></div>`,
-  notes:`<p><b>Say it, don't show it:</b> the builder walks eight steps — assessment, impact, workshops, challenges, classes, leadership, incentives, review. Narrate them as you click; don't make them read a list.</p><p>Press <b>Open live</b> and build a real campaign from the pain points they just named. Two workshops and two challenges — the point is speed and fit, not breadth.</p><p>Narrate the click: <em>"Beyond Burnout for week three, the recovery challenge right behind it, and the proposal comes out of this the moment we agree."</em></p>`,
+  notes:`<p><b>This is the fork.</b> Three ways out of this slide, and you choose on the call: (1) switch to the live builder now and build the campaign with them \u2014 usually when the discovery answers were strong; (2) say <em>\"let me give you an overview first, and then we'll build yours\"</em> and keep going; (3) for a broker, keep going \u2014 they want the client experience before the plan.</p><p><b>Say it, don't show it:</b> the builder walks eight steps — assessment, impact, workshops, challenges, classes, leadership, incentives, review. Narrate them as you click; don't make them read a list.</p><p>Press <b>Open live</b> and build a real campaign from the pain points they just named. Two workshops and two challenges — the point is speed and fit, not breadth.</p><p>Narrate the click: <em>"Beyond Burnout for week three, the recovery challenge right behind it, and the proposal comes out of this the moment we agree."</em></p>`,
   cue:"Cmd/Alt-Tab back to this tab when done. The live tab stays open for the next step.", time:"3 min"
 },
-{"act": "Live demo", "title": "Launch kit: portal, emails, invites", "site": "hrportal", "eyebrow": "Live demo \u00b7 Before the first workshop", "h1": "Everything HR needs is already written.", "url": "app.skillfulmeans.life/clientportal \u2014 Lakeside Manufacturing", "notes": "<p>This is a working portal \u2014 scroll it, click the tabs. You're on <b>Emails</b>: announcement two weeks out, reminder two days out, follow-up after. Click a program to open its templates.</p><p><em>\"Leading up to the first workshop you get your portal. The templates live here, we also email them to you, and we send a calendar invite with the link. Promoting it is forward, forward, done.\"</em></p><p>Sample data \u2014 Lakeside Manufacturing, 412 employees. Use <b>Open live</b> for the client's real portal.</p>", "cue": "This is the \"easy lift\" moment. HR directors buy on how little work this is for them.", "time": "1\u20132 min", "siteTab": "email"},
-{"act": "Live demo", "title": "Day of: the check-in and assessment", "site": "checkin", "eyebrow": "Live demo \u00b7 Workshop day", "h1": "Two minutes. Confidential. Validated.", "url": "app.skillfulmeans.life/Checkin \u2014 Lakeside Manufacturing", "notes": "<p><b>Do this one live, on the screen.</b> Type a name and email, hit <em>Join session</em>, and click through a few answers. Nothing is stored \u2014 it's a demo.</p><p>Narrate it: <em>\"Your team checks in, answers a few quick questions while they wait, and joins the call. Two minutes.\"</em> Then on the last screen: <em>\"And this is all you ever see \u2014 a team average. Never an individual answer.\"</em></p><p>Five validated instruments: WHO-5 wellbeing, UWES-3 engagement, PSS-4 stress, CBI burnout, UCLA-3 connection. Say \"aggregate\" and \"confidential\" out loud \u2014 privacy is the first worry and it dissolves when you name it.</p>", "cue": "Best single moment in the demo. Let them see the last screen \u2014 the aggregate view \u2014 before moving on.", "time": "2 min"},
-{"act": "Live demo", "title": "The workshop", "site": "hrportal", "eyebrow": "Live demo \u00b7 The workshop", "h1": "One hour that changes how people work.", "url": "app.skillfulmeans.life/clientportal \u2014 Programming", "notes": "<p>You're on the <b>Programming</b> tab. Point at the assessment chips under Beyond Burnout \u2014 UWES-3, WHO-5, PSS-4, CBI, UCLA-3 \u2014 <em>\"every workshop carries its own measurement.\"</em></p><p>Then keep it short; they know what a workshop is. What's different: <em>\"It's interactive. People are practicing the skill in breakouts within fifteen minutes. And they leave with recordings they'll actually use.\"</em></p><p>Delivered by William for mental fitness topics, or a trained health coach for nutrition and movement.</p>", "cue": "If you have a recording clip, this is where a 60-second excerpt earns its place.", "time": "1 min", "live": "workshop", "siteTab": "prog"},
-{"act": "Live demo", "title": "HR portal: participation and data", "site": "hrportal", "eyebrow": "Live demo \u00b7 After the workshop", "h1": "HR sees who showed up \u2014 and where the team stands.", "url": "app.skillfulmeans.life/clientportal \u2014 Engagement", "notes": "<p>You're on <b>Engagement</b>: every check-in, exportable as CSV. <em>\"This is your raffle list. Nothing for you to compile.\"</em></p><p>Then click <b>Feedback</b> in the sidebar for the wellness ROI view \u2014 baseline versus follow-up on all five markers. <em>\"This is what you forward to leadership after session one, and it's the before picture for the report at the end.\"</em></p><p>For brokers in the room: <em>\"You get this view for every client you bring us. You're the one bringing data to the renewal meeting.\"</em></p>", "cue": "Two tabs, then move on. Resist touring every menu.", "time": "2 min", "siteTab": "eng"},
 {
-  act:"Live demo", title:"The follow-on challenge: invite and register", dark:false, live:"register",
+  act:"Your people's experience", stage:"Before the workshop", title:"The invitation", dark:false,
   html:()=>`
-    <div class="top"><span class="eyebrow">Live demo · The challenge begins</span><span class="pill mauve">Challenge</span></div>
-    <div class="body">
-      <div>
-        <h1>Same drill. <em>Now the habit forms.</em></h1>
-        <p>Fourteen days that turn the skill into daily practice — free to participants.</p>
-        <ul class="clean mauve"><li>Daily videos, guided meditations, and tips</li><li>Team leaderboard and a coached discussion board</li></ul>
+    <div class="top"><span class="eyebrow">Your people's experience · The invitation</span><span class="pill lav">Sample email</span></div>
+    <div class="body screen">
+      <div class="mail">
+        <div class="mh">
+          <div class="row"><span>From</span><b>Lakeside Manufacturing · People Team</b></div>
+          <div class="row"><span>To</span><b>All staff</b></div>
+          <div class="row"><span>Subject</span><b>You're invited: Beyond Burnout — Tuesday, October 14 at noon</b></div>
+          <span class="samp">From the launch kit · sample</span>
+        </div>
+        <div class="mb">
+          <p>Hi team,</p>
+          <p>We've brought in SkillfulMeans for a one-hour workshop, <b>Beyond Burnout: From Pressure to Presence</b>, led by Dr. William Jackson — a clinical psychologist and researcher at Mass General who has spent his career with people under real pressure.</p>
+          <p>It's practical, not preachy: three things you can use the same afternoon. Bring your lunch.</p>
+          <p class="cta"><a>Add to calendar</a><span>Tuesday, October 14 · 12:00–1:00 PM ET · the Zoom link is in the invite</span></p>
+          <p>When you join, you'll be asked a few quick questions first — two minutes, confidential, and the only thing anyone ever sees is the team average.</p>
+          <p>— The People Team</p>
+        </div>
       </div>
-      <div><div class="shot"><img src="${IMG.register}" alt="courses.skillfulmeans.life · Calm and Confident Mind 14-Day Challenge"><div class="cap">courses.skillfulmeans.life · Calm and Confident Mind 14-Day Challenge</div></div></div>
     </div>
     <div class="foot"><span>www.skillfulmeans.life</span><span>${pg()}</span></div>`,
-  notes:`<p><b>Say it, don't show it:</b> HR gets the same launch kit, and registration takes under a minute — sign up, look for the email, download the app or use the web.</p><p><em>"After the workshop the team gets a challenge designed to integrate those skills. Same drill: templates in your portal, emailed to you, calendar invite with the registration link."</em> Open the live page and show how short the form is.</p>`,
+  notes:`<p><b>Say it, don't show it:</b> <em>"The first thing your people see is this. We write it, you forward it. Announcement two weeks out, a reminder two days before, a follow-up with the recording afterwards — all in your portal, all in your voice if you want to edit them."</em></p><p>This is a sample of the announcement template from the launch kit, written for the Lakeside sample data. When Heather supplies the real template, it replaces this screen.</p><p>Point at the last paragraph: it sets up the next two screens — the survey, and the check-in where they answer it.</p>`,
+  cue:"The story from here is chronological: invitation → sign-up → survey → join → challenge → report.", time:"45 sec"
+},
+{
+  act:"Your people's experience", stage:"Before the workshop", title:"Sign up for the challenge", dark:false, live:"register",
+  html:()=>`
+    <div class="top"><span class="eyebrow">Your people's experience · Sign-up</span><span class="pill mauve">Challenge</span></div>
+    <div class="body screen fit">
+      <div class="shot"><img src="${IMG.register}" alt="courses.skillfulmeans.life · Calm and Confident Mind 14-Day Challenge"><div class="cap">courses.skillfulmeans.life · Calm and Confident Mind 14-Day Challenge</div></div>
+    </div>
+    <div class="foot"><span>www.skillfulmeans.life</span><span>${pg()}</span></div>`,
+  notes:`<p><b>Say it, don't show it:</b> <em>\"Same drill. Now the habit forms.\"</em> Fourteen days that turn the skill into daily practice, free to participants: daily videos, guided meditations, a team leaderboard and a coached discussion board. The words used to be on the slide; the screenshot is the slide now, so say them.</p><p>HR gets the same launch kit, and registration takes under a minute — sign up, look for the email, download the app or use the web.</p><p><em>"After the workshop the team gets a challenge designed to integrate those skills. Same drill: templates in your portal, emailed to you, calendar invite with the registration link."</em> Open the live page and show how short the form is.</p>`,
   cue:"This answers \"we tried wellness and it didn\u2019t stick.\" The challenge is the habit layer.", time:"1 min"
 },
-{"act": "Live demo", "title": "Inside the challenge: a day", "site": "day", "eyebrow": "Live demo \u00b7 Inside the challenge", "h1": "Five minutes a day, with your team.", "url": "courses.skillfulmeans.life/tn-challenge-day-3", "notes": "<p>Scroll this one all the way down \u2014 that's the point. Video at the top, then homework, then the discussion prompt, then what teammates actually posted.</p><p><em>\"That's a whole day. Five minutes, one change, one post. Fourteen of those and the habit is built \u2014 as a team, not alone.\"</em></p><p>Click the checkbox next to the homework to show how a participant marks the day complete. The comments underneath are what makes it stick: people see their colleagues doing it.</p>", "cue": "Brevity is the feature. Let the scroll do the talking.", "time": "2 min", "live": "challengeDay"},
+{"act": "Your people's experience", "stage": "Before the workshop", "title": "The baseline survey", "img": "deck10", "notes": "<p><b>Say it, don't show it:</b> the first thing a participant actually does is answer a two-minute baseline survey. This is where you explain what it measures and why, before the next screen shows them doing it.</p><p>Short baseline survey, short follow-up survey, customized VOI report. Name the instruments: <em>\"Brief, validated instruments \u2014 WHO-5 wellbeing, UWES-3 engagement \u2014 not a made-up quiz.\"</em> Say \"aggregate\" and \"confidential\" out loud. You'll show them the real thing in a few minutes.</p>", "cue": "", "time": "1 min"},
+{"act": "Your people's experience", "stage": "Workshop day", "title": "Joining the workshop", "site": "checkin", "eyebrow": "Your people's experience \u00b7 Workshop day", "h1": "Log in, two quick minutes, then the room.", "url": "app.skillfulmeans.life/Checkin \u2014 Lakeside Manufacturing", "notes": "<p><b>This is the login.</b> The link in the invite lands here: name, work email, <em>Join session</em> \u2014 and it prompts the survey before letting anyone into the workshop. That is the whole mechanism for getting a baseline from a room that would never fill in a survey on its own.</p><p><b>Do this one live, on the screen.</b> Type a name and email, hit <em>Join session</em>, and click through a few answers. Nothing is stored \u2014 it's a demo.</p><p>Narrate it: <em>\"Your team checks in, answers a few quick questions while they wait, and joins the call. Two minutes.\"</em> Then on the last screen: <em>\"And this is all you ever see \u2014 a team average. Never an individual answer.\"</em></p><p>Five validated instruments: WHO-5 wellbeing, UWES-3 engagement, PSS-4 stress, CBI burnout, UCLA-3 connection. Say \"aggregate\" and \"confidential\" out loud \u2014 privacy is the first worry and it dissolves when you name it.</p>", "cue": "Best single moment in the demo. Let them see the last screen \u2014 the aggregate view \u2014 before moving on.", "time": "2 min"},
 {
-  act:"Live demo", title:"The community: posts, points, leaderboard", dark:false, live:["challenge"],
+  act:"Your people's experience", stage:"During the challenge", title:"Inside the community", dark:false, live:["challenge"],
   html:()=>`
-    <div class="top"><span class="eyebrow">Live demo · Inside the challenge</span><span class="pill mauve">Challenge</span></div>
-    <div class="body">
-      <div>
-        <h1>Points for practice — and for <em>lifting each other up.</em></h1>
-        <ul class="clean mauve"><li>Each client gets its own space, challenges, and AI coach</li><li>Points for posting, for commenting, and for posts marked "Inspired"</li><li>The winners made the team better, not just the most activities</li></ul>
-      </div>
-      <div><div class="shots"><div class="shot"><img src="${IMG.feed}" alt="Community feed · posts, comments, "Inspired" reactions"><div class="cap">Community feed · posts, comments, "Inspired" reactions</div></div><div class="shot"><img src="${IMG.leaderboard}" alt="Leaderboard · weekly, monthly, all-time points"><div class="cap">Leaderboard · weekly, monthly, all-time points</div></div></div></div>
+    <div class="top"><span class="eyebrow">Your people's experience · The community</span><span class="pill mauve">Challenge</span></div>
+    <div class="body screen">
+      <div class="shots"><div class="shot"><img src="${IMG.feed}" alt="Community feed · posts, comments, "Inspired" reactions"><div class="cap">Community feed · posts, comments, "Inspired" reactions</div></div><div class="shot"><img src="${IMG.leaderboard}" alt="Leaderboard · weekly, monthly, all-time points"><div class="cap">Leaderboard · weekly, monthly, all-time points</div></div></div>
     </div>
     <div class="foot"><span>www.skillfulmeans.life</span><span>${pg()}</span></div>`,
-  notes:`<p><b>Say it, don't show it:</b> <em>"Participants post daily and comment on each other's posts, and they earn points not just for finishing activities but for being a supportive teammate — encouraging others, writing posts people mark as inspiring."</em></p><p>Open the live community and show the feed, then Leaderboard. The line that lands: <em>"The winners aren't the people who did the most activities. They're the people who were the best teammates — that's what the points reward."</em></p><p>The live view shows real member names. Present a demo or internal group's feed if you'd rather not show one client's people to another.</p>`,
+  notes:`<p><b>Say it, don't show it:</b> points for practice \u2014 and for lifting each other up. Each client gets its own space, challenges and AI coach; points for posting, for commenting, and for posts marked \"Inspired\"; the winners made the team better, not just the most activities.</p><p>Scroll down through the feed, then the leaderboard. <b>These two screenshots are being reshot</b> \u2014 the current ones are an admin view and show a real client's name in the About panel. Present the live community instead until the new captures land.</p><p><em>"Participants post daily and comment on each other's posts, and they earn points not just for finishing activities but for being a supportive teammate — encouraging others, writing posts people mark as inspiring."</em></p><p>Open the live community and show the feed, then Leaderboard. The line that lands: <em>"The winners aren't the people who did the most activities. They're the people who were the best teammates — that's what the points reward."</em></p><p>The live view shows real member names. Present a demo or internal group's feed if you'd rather not show one client's people to another.</p>`,
   cue:"Names are blurred in these screenshots \u2014 the live site is not.", time:"2 min"
 },
-{"act": "Partners & data", "title": "The referral partner portal", "site": "brokerportal", "eyebrow": "For brokers \u00b7 Your portal", "h1": "Your whole book, in one place.", "url": "app.skillfulmeans.life/partner \u2014 Horizon Benefits Group", "notes": "<p><b>Broker audience only \u2014 skip to the next step for an HR-only call.</b></p><p>This is Alex Morgan's view at Horizon Benefits Group. Scroll and click: Dashboard shows what needs attention this week, My Clients shows every account they've referred and where it stands, Referral Toolkit is the co-branded leave-behinds and ready-to-send emails.</p><p>The pitch: <em>\"You make the introduction. We run discovery within 48 hours, build the proposal on that call, deliver everything, and hand you the participation and outcome data at renewal. Nothing lands on your desk.\"</em></p><p>Sample account \u2014 nothing real is exposed.</p>", "cue": "William's rule: no portal access on call one. Set the partner up on the second meeting, once they start referring.", "time": "2\u20133 min"},
-{"act": "Partners & data", "title": "Claims insight and the journey assessment", "site": "brokerportal", "live": "claims", "eyebrow": "For brokers &amp; HR \u00b7 Going deeper", "h1": "Two things nobody else brings to the meeting.", "url": "app.skillfulmeans.life/partner \u2014 Claims Insight", "notes": "<p>Two capabilities that turn a wellness conversation into a numbers conversation. Both live in this portal \u2014 click between the <b>Claims Insight</b> and <b>Journey Assessment</b> tabs.</p><p><b>Claims Insight.</b> Hand us a de-identified claims extract and we map spend to stress-attributable drivers. The example on screen: $431,000 of a $911,000 spend traces to preventable stress, concentrated in sleep and anxiety prescriptions and night-shift ER use. <em>\"You walk in with the number, the target, and the plan \u2014 a $7,400 campaign against a $431,000 exposure.\"</em></p><p>Say the caveat out loud: <em>\"These are directional estimates from published research, not an actuarial finding. We pair it with your carrier's own reporting.\"</em> Never let a prospect leave thinking it is a guarantee.</p><p><b>Mental Fitness Journey Assessment.</b> A free 5-minute team assessment that places any client on a four-stage journey \u2014 Reactive, Aware, Practicing, Integrated \u2014 with six dimensions underneath. The two weakest dimensions choose the programming. <em>\"It gives HR a stage, not a vibe. Leadership can act on a stage.\"</em></p><p>For an HR-only call, run the journey assessment framing and skip the claims tab unless they own the claims relationship.</p>", "cue": "Best upsell moment in the demo. Offer to run a free journey assessment for one client account this month.", "time": "2\u20133 min", "siteTab": "claims"},
+{"act": "Your people's experience", "stage": "During the challenge", "title": "A day in the challenge", "site": "day", "eyebrow": "Your people's experience \u00b7 One day", "h1": "Five minutes a day, with your team.", "url": "courses.skillfulmeans.life/tn-challenge-day-3", "notes": "<p>Scroll this one all the way down \u2014 that's the point. Video at the top, then homework, then the discussion prompt, then what teammates actually posted.</p><p><em>\"That's a whole day. Five minutes, one change, one post. Fourteen of those and the habit is built \u2014 as a team, not alone.\"</em></p><p>Click the checkbox next to the homework to show how a participant marks the day complete. The comments underneath are what makes it stick: people see their colleagues doing it.</p>", "cue": "Brevity is the feature. Let the scroll do the talking.", "time": "2 min", "live": "challengeDay"},
 {
-  act:'Partners & data', title:'Follow-up survey and Value of Investment report', dark:true, live:'report',
+  act:'Results', stage:'After the campaign', title:'The before-and-after report', dark:true, live:'report',
   html:()=>`
-    <div class="top"><span class="eyebrow">Live demo · Measure</span><span class="pill mauve">Value of investment</span></div>
+    <div class="top"><span class="eyebrow">Results · Measure</span><span class="pill mauve">Value of investment</span></div>
     <div class="body one vois">
       <div class="voihead">
         <h1>The before and after, <em>in one report.</em></h1>
@@ -771,8 +790,13 @@ const STEPS = [
   notes:`<p><b>Say it, don't show it:</b> the short follow-up survey lands at the end of the challenge; the VOI report at the end of the campaign or annually. Region 16 ran Mindfulness for Stress Reduction plus the Calm and Confident Mind challenge — focus also went 60% → 100%. Silver Hill ran the 3-part Leadership EQ series — difficult conversations improved 19%.</p><p><em>"This is the report. Before and after on every marker, participation across the campaign, ready for your leadership team — and, if a broker brought us in, ready for the renewal meeting."</em></p><p>These are real reports. Region 16 for HR and school/mid-market buyers: <em>"Half the staff were burned out at the start. After one workshop and one challenge, three in ten."</em> Silver Hill for leadership buyers and healthcare brokers. Offer to send the PDF that matches their world in the follow-up.</p>`,
   cue:'For Leadership EQ engagements the ROI report lands within one month of the final session.', time:'1 min'
 },
+{"act": "Your HR portal", "title": "Launch kit: portal, emails, invites", "site": "hrportal", "eyebrow": "Your HR portal \u00b7 Before the first workshop", "h1": "Everything HR needs is already written.", "url": "app.skillfulmeans.life/clientportal \u2014 Lakeside Manufacturing", "notes": "<p>This is a working portal \u2014 scroll it, click the tabs. You're on <b>Emails</b>: announcement two weeks out, reminder two days out, follow-up after. Click a program to open its templates.</p><p><em>\"Leading up to the first workshop you get your portal. The templates live here, we also email them to you, and we send a calendar invite with the link. Promoting it is forward, forward, done.\"</em></p><p>Sample data \u2014 Lakeside Manufacturing, 412 employees. Use <b>Open live</b> for the client's real portal.</p>", "cue": "This is the \"easy lift\" moment. HR directors buy on how little work this is for them.", "time": "1\u20132 min", "siteTab": "email"},
+{"act": "Your HR portal", "title": "The workshop", "site": "hrportal", "eyebrow": "Your HR portal \u00b7 The workshop", "h1": "One hour that changes how people work.", "url": "app.skillfulmeans.life/clientportal \u2014 Programming", "notes": "<p>You're on the <b>Programming</b> tab. Point at the assessment chips under Beyond Burnout \u2014 UWES-3, WHO-5, PSS-4, CBI, UCLA-3 \u2014 <em>\"every workshop carries its own measurement.\"</em></p><p>Then keep it short; they know what a workshop is. What's different: <em>\"It's interactive. People are practicing the skill in breakouts within fifteen minutes. And they leave with recordings they'll actually use.\"</em></p><p>Delivered by William for mental fitness topics, or a trained health coach for nutrition and movement.</p>", "cue": "If you have a recording clip, this is where a 60-second excerpt earns its place.", "time": "1 min", "live": "workshop", "siteTab": "prog"},
+{"act": "Your HR portal", "title": "HR portal: participation and data", "site": "hrportal", "eyebrow": "Your HR portal \u00b7 After the workshop", "h1": "HR sees who showed up \u2014 and where the team stands.", "url": "app.skillfulmeans.life/clientportal \u2014 Engagement", "notes": "<p>You're on <b>Engagement</b>: every check-in, exportable as CSV. <em>\"This is your raffle list. Nothing for you to compile.\"</em></p><p>Then click <b>Feedback</b> in the sidebar for the wellness ROI view \u2014 baseline versus follow-up on all five markers. <em>\"This is what you forward to leadership after session one, and it's the before picture for the report at the end.\"</em></p><p>For brokers in the room: <em>\"You get this view for every client you bring us. You're the one bringing data to the renewal meeting.\"</em></p>", "cue": "Two tabs, then move on. Resist touring every menu.", "time": "2 min", "siteTab": "eng"},
+{"act": "For brokers", "broker": true, "title": "The referral partner portal", "site": "brokerportal", "eyebrow": "For brokers \u00b7 Your portal", "h1": "Your whole book, in one place.", "url": "app.skillfulmeans.life/partner \u2014 Horizon Benefits Group", "notes": "<p><b>Broker audience only \u2014 skip to the next step for an HR-only call.</b></p><p>This is Alex Morgan's view at Horizon Benefits Group. Scroll and click: Dashboard shows what needs attention this week, My Clients shows every account they've referred and where it stands, Referral Toolkit is the co-branded leave-behinds and ready-to-send emails.</p><p>The pitch: <em>\"You make the introduction. We run discovery within 48 hours, build the proposal on that call, deliver everything, and hand you the participation and outcome data at renewal. Nothing lands on your desk.\"</em></p><p>Sample account \u2014 nothing real is exposed.</p>", "cue": "William's rule: no portal access on call one. Set the partner up on the second meeting, once they start referring.", "time": "2\u20133 min"},
+{"act": "For brokers", "broker": true, "title": "Claims insight and the journey assessment", "site": "brokerportal", "live": "claims", "eyebrow": "For brokers &amp; HR \u00b7 Going deeper", "h1": "Two things nobody else brings to the meeting.", "url": "app.skillfulmeans.life/partner \u2014 Claims Insight", "notes": "<p>Two capabilities that turn a wellness conversation into a numbers conversation. Both live in this portal \u2014 click between the <b>Claims Insight</b> and <b>Journey Assessment</b> tabs.</p><p><b>Claims Insight.</b> Hand us a de-identified claims extract and we map spend to stress-attributable drivers. The example on screen: $431,000 of a $911,000 spend traces to preventable stress, concentrated in sleep and anxiety prescriptions and night-shift ER use. <em>\"You walk in with the number, the target, and the plan \u2014 a $7,400 campaign against a $431,000 exposure.\"</em></p><p>Say the caveat out loud: <em>\"These are directional estimates from published research, not an actuarial finding. We pair it with your carrier's own reporting.\"</em> Never let a prospect leave thinking it is a guarantee.</p><p><b>Mental Fitness Journey Assessment.</b> A free 5-minute team assessment that places any client on a four-stage journey \u2014 Reactive, Aware, Practicing, Integrated \u2014 with six dimensions underneath. The two weakest dimensions choose the programming. <em>\"It gives HR a stage, not a vibe. Leadership can act on a stage.\"</em></p><p>For an HR-only call, run the journey assessment framing and skip the claims tab unless they own the claims relationship.</p>", "cue": "Best upsell moment in the demo. Offer to run a free journey assessment for one client account this month.", "time": "2\u20133 min", "siteTab": "claims"},
 {
-  act:'Paying for it', title:'Where the budget comes from', dark:true,
+  act:'For brokers', broker:true, title:'Where the budget comes from', dark:true,
   html:()=>`
     <div class="top"><span class="eyebrow">Paying for it</span><span class="pill lav">Funding routes</span></div>
     <div class="body one">
@@ -803,12 +827,26 @@ let i = 0;
 const $ = s => document.querySelector(s);
 const app=$('#app'), rail=$('#rail'), slide=$('#slide'), notes=$('#notes');
 
+/* client mode: the three broker steps leave the list, the count and the arrow keys.
+   Indices stay absolute (hash links keep working); only the numbering is by position. */
+const modeStore={ get(){ try{ return localStorage.getItem('skms-demo-mode')||'full'; }catch(e){ return 'full'; } },
+                  set(v){ try{ localStorage.setItem('skms-demo-mode',v); }catch(e){} } };
+let MODE=modeStore.get();
+const shown=st=>!(MODE==='client'&&st.broker);
+const VIS=()=>STEPS.map((st,idx)=>idx).filter(idx=>shown(STEPS[idx]));
+function stepFrom(idx,dir){ const v=VIS(); const p=v.indexOf(idx); if(p<0) return v[0]; return v[Math.max(0,Math.min(v.length-1,p+dir))]; }
+function paintMode(){
+  $('#modeFull').classList.toggle('on',MODE!=='client'); $('#modeClient').classList.toggle('on',MODE==='client');
+  $('#hdrMode').hidden = MODE!=='client';
+}
+function setMode(m){ MODE=m; modeStore.set(m); buildRail(); if(!shown(STEPS[i])) i=stepFrom(i,1); render(); paintMode(); }
+
 function buildRail(){
   let html='', lastAct='';
-  STEPS.forEach((s,idx)=>{
+  VIS().forEach((idx,pos)=>{ const s=STEPS[idx];
     if(s.act!==lastAct){ html+=`<div class="grp">${s.act}</div>`; lastAct=s.act; }
     const hasLive=(s.live?(Array.isArray(s.live)?s.live:[s.live]):[]).some(k=>cfg[k]);
-    html+=`<button class="step" data-i="${idx}"><span class="n">${String(idx+1).padStart(2,'0')}</span><span>${s.title}${hasLive?'<span class="live" title="Opens the real platform"></span>':''}</span></button>`;
+    html+=`<button class="step" data-i="${idx}"><span class="n">${String(pos+1).padStart(2,'0')}</span><span>${s.title}${hasLive?'<span class="live" title="Opens the real platform"></span>':''}</span></button>`;
   });
   rail.innerHTML=html;
   rail.querySelectorAll('.step').forEach(b=>b.addEventListener('click',()=>go(+b.dataset.i)));
@@ -831,12 +869,13 @@ function render(){
   $('#hdrAct').textContent=s.act;
   $('#hdrTitle').textContent=s.title;
   $('#hdrClient').innerHTML=client()?`Presenting to <b>${escapeHtml(client())}</b>`:'';
-  notes.innerHTML=`<div class="k">Presenter notes · Step ${i+1}</div><div class="say">${s.notes}</div>${s.cue?`<div class="cue"><b>Cue</b>${s.cue}</div>`:''}<div class="time">Suggested time: ${s.time||'—'} · Full run ≈ 29 min. HR-only short version: 1, 5, 9, 14–23, 26, 27, 28. Broker version: 1, 5, 8, 14–16, 18, 24, 25, 26, 27, 28.</div>`;
+  const vis=VIS(), pos=vis.indexOf(i);
+  notes.innerHTML=`<div class="k">Presenter notes · Step ${pos+1}</div><div class="say">${s.notes}</div>${s.cue?`<div class="cue"><b>Cue</b>${s.cue}</div>`:''}<div class="time">Suggested time: ${s.time||'—'} · Full run ≈ 30 min. Client calls: switch to Client mode in Links &amp; setup and the broker steps drop out of the run. Short version for a warm referral: skip deck 2–4.</div>`;
   rail.querySelectorAll('.step').forEach(b=>b.classList.toggle('active',+b.dataset.i===i));
   const active=rail.querySelector('.step.active'); if(active) active.scrollIntoView({block:'nearest'});
-  $('#prevBtn').disabled=i===0; $('#nextBtn').disabled=i===STEPS.length-1;
-  $('#cnt').textContent=`${i+1} / ${STEPS.length}`;
-  $('#prog').style.width=((i+1)/STEPS.length*100)+'%';
+  $('#prevBtn').disabled=pos<=0; $('#nextBtn').disabled=pos>=vis.length-1;
+  $('#cnt').textContent=`${pos+1} / ${vis.length}`;
+  $('#prog').style.width=((pos+1)/vis.length*100)+'%';
   renderTimeline(s);
   // live buttons (a step may have one or several)
   // only render a button when the link is actually set — nothing half-finished shows on a shared screen
@@ -925,58 +964,16 @@ function wireDay(r){
   if(sb&&cm) sb.addEventListener('click',()=>cm.scrollIntoView({behavior:'smooth',block:'start'}));
 }
 
-/* ---------- live-demo timeline (the sample 90-day campaign from slide 12) ---------- */
-const TL_TOTAL=90;
-const PHASES=[
-  {k:'Weeks 1\u20132',t:'Scope & baseline',a:1,b:14},
-  {k:'Week 3',t:'Kickoff workshop',a:15,b:21},
-  {k:'Weeks 4\u20135',t:'The challenge',a:22,b:35},
-  {k:'Weeks 6\u201312',t:'Sustain & measure',a:36,b:90}
-];
-const MILES=[
-  {d:3,t:'Discovery call'},{d:8,t:'Campaign built together'},{d:14,t:'Portal + launch emails'},
-  {d:18,t:'Kickoff workshop'},{d:22,t:'Challenge opens'},{d:35,t:'Challenge complete'},
-  {d:70,t:'Follow-up survey'},{d:84,t:'VOI report'}
-];
-/* day 0 = show the whole arc with no position marker */
-const PHASE_MAP=[
-  [/take a look at the live demo/i,0,'A 90-day campaign, start to finish'],
-  [/^Discovery/i,3,'Week 1 \u00b7 Discovery call'],
-  [/build your campaign/i,8,'Week 2 \u00b7 The plan, built with you'],
-  [/^Launch kit/i,14,'Week 2 \u00b7 Two weeks out'],
-  [/check-in and assessment/i,18,'Week 3 \u00b7 Workshop day'],
-  [/^The workshop$/i,18,'Week 3 \u00b7 Workshop day'],
-  [/participation and data/i,19,'Week 3 \u00b7 The morning after'],
-  [/invite and register/i,22,'Week 4 \u00b7 The challenge opens'],
-  [/^Inside the challenge/i,24,'Week 4 \u00b7 Day 3 of 14'],
-  [/posts, points, leaderboard/i,30,'Week 5 \u00b7 Mid-challenge'],
-  [/Value of Investment report/i,84,'Week 12 \u00b7 The report']
-];
-function phaseFor(st){ for(const p of PHASE_MAP){ if(p[0].test(st.title||'')) return {day:p[1],label:p[2]}; } return null; }
+/* ---------- journey stage label ---------- */
+/* A step that carries `stage` gets one line above the slide saying where in the
+   participant's journey it sits. No weeks, no day counts: the sample campaign is
+   90 days but a real one can be 30 or 360, and the old strip asserted a schedule
+   in type nobody could read from across a table. */
 function renderTimeline(st){
-  const el=$('#tl'), p=phaseFor(st);
-  if(!p){ el.hidden=true; el.innerHTML=''; return; }
+  const el=$('#tl');
+  if(!st.stage){ el.hidden=true; el.innerHTML=''; return; }
   el.hidden=false;
-  const day=p.day;
-  const cur = day>0 ? PHASES.findIndex(ph=>day<=ph.b) : -1;
-  const r1='<div class="r1"><span class="k">The 90-day campaign</span>'+
-    '<span class="now'+(day>0?'':' plain')+'">'+p.label+'</span>'+
-    '<span class="day">'+(day>0?('Day '+day+' of '+TL_TOTAL):(TL_TOTAL+' days, end to end'))+'</span></div>';
-  const track=PHASES.map((ph,n)=>{
-    const span=ph.b-ph.a+1;
-    const pct=v=>Math.max(0,Math.min(100,(v-ph.a+1)/span*100));
-    const state = day>0 ? (n<cur?'done':(n===cur?'on':'')) : '';
-    let inner='';
-    if(day>0 && n<cur) inner+='<span class="fill" style="width:100%"></span>';
-    else if(day>0 && n===cur) inner+='<span class="fill" style="width:'+pct(day).toFixed(1)+'%"></span>';
-    inner+=MILES.filter(m=>m.d>=ph.a&&m.d<=ph.b).map(m=>{
-      const cls = (day>0&&Math.abs(m.d-day)<=1) ? 'ms at' : ((day>0&&m.d<day)?'ms done':'ms');
-      return '<span class="'+cls+'" style="left:'+pct(m.d).toFixed(1)+'%" title="Day '+m.d+' \u2014 '+m.t+'"></span>';
-    }).join('');
-    if(day>0&&n===cur) inner+='<span class="pin" style="left:'+pct(day).toFixed(1)+'%"></span>';
-    return '<div class="ph '+state+'" style="flex:'+span+' 1 0"><b>'+ph.k+'</b><em>'+ph.t+'</em><span class="bar">'+inner+'</span></div>';
-  }).join('');
-  el.innerHTML=r1+'<div class="track">'+track+'</div>';
+  el.innerHTML='<span class="k">Where your people are</span><span class="stage">'+escapeHtml(st.stage)+'</span>';
 }
 
 function wirePain(){
@@ -1028,8 +1025,10 @@ $('#setReset').addEventListener('click',()=>{ cfg=Object.fromEntries(LINKS.map(l
 $('#settings').addEventListener('click',e=>{ if(e.target.id==='settings') closeSettings(); });
 
 /* ---------- chrome ---------- */
-$('#prevBtn').addEventListener('click',()=>go(i-1));
-$('#nextBtn').addEventListener('click',()=>go(i+1));
+$('#prevBtn').addEventListener('click',()=>go(stepFrom(i,-1)));
+$('#nextBtn').addEventListener('click',()=>go(stepFrom(i,1)));
+$('#modeFull').addEventListener('click',()=>setMode('full'));
+$('#modeClient').addEventListener('click',()=>setMode('client'));
 function toggleNotes(){ app.classList.toggle('notes-open'); try{ localStorage.setItem('skms-demo-notes', app.classList.contains('notes-open')?'1':'0'); }catch(e){} }
 $('#notesToggle').addEventListener('click',toggleNotes);
 $('#railToggle').addEventListener('click',()=>app.classList.toggle('rail-closed'));
@@ -1057,9 +1056,9 @@ document.addEventListener('keydown',e=>{
     return; }
   if($('#settings').classList.contains('open')){ if(e.key==='Escape') closeSettings(); return; }
   if(e.target.tagName==='INPUT') return;
-  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){ e.preventDefault(); go(i+1); }
-  else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); go(i-1); }
-  else if(e.key==='Home') go(0); else if(e.key==='End') go(STEPS.length-1);
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){ e.preventDefault(); go(stepFrom(i,1)); }
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); go(stepFrom(i,-1)); }
+  else if(e.key==='Home') go(VIS()[0]); else if(e.key==='End') go(VIS().slice(-1)[0]);
   else if(e.key.toLowerCase()==='n') toggleNotes();
   else if(e.key.toLowerCase()==='l') openLive();
   else if(e.key.toLowerCase()==='s') openSettings();
@@ -1094,7 +1093,8 @@ rail.addEventListener('click',e=>{ if(SMALL()&&e.target.closest('.step')) app.cl
 
 buildRail();
 const m=(location.hash||'').match(/step-(\d+)/); if(m) i=Math.max(0,Math.min(STEPS.length-1,+m[1]-1));
-render();
+if(!shown(STEPS[i])) i=stepFrom(i,1);
+render(); paintMode();
 try{ if(localStorage.getItem('skms-demo-notes')==='1' && !SMALL()) app.classList.add('notes-open'); }catch(e){}
 </script>
 
