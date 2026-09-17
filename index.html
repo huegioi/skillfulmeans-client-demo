@@ -354,6 +354,12 @@ main#stage{grid-template-rows:auto 1fr}
 .siteframe .bar em{margin-left:auto;font-style:normal;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--coral);border-radius:20px;padding:3px 10px;white-space:nowrap}
 .siteframe .vp{overflow:auto;min-height:0;background:#fff;overscroll-behavior:contain}
 .siteframe .host{display:block;min-height:100%}
+/* a live external page kept mounted across the whole run, so numbers typed
+   into it survive going back a slide. Shown or hidden, never rebuilt. */
+#liveframe{grid-row:2}
+.siteframe .vp.lf{overflow:hidden}
+#lfIframe{width:100%;height:100%;border:0;display:block;background:#fff}
+
 /* ---------- notes drawer ---------- */
 aside#notes{background:var(--paper);border-left:1px solid var(--line);overflow:hidden auto;padding:0;opacity:0;transition:opacity .2s}
 #app.notes-open aside#notes{opacity:1;padding:18px 20px 30px}
@@ -536,7 +542,12 @@ footer .cnt{font-size:12.5px;color:rgba(255,255,255,.65);font-variant-numeric:ta
 
   <nav id="rail" aria-label="Demo steps"></nav>
 
-  <main id="stage"><div id="tl" hidden></div><section class="slide" id="slide" aria-live="polite"></section></main>
+  <main id="stage"><div id="tl" hidden></div><section class="slide" id="slide" aria-live="polite"></section>
+    <section class="slide sitepage" id="liveframe" hidden>
+      <div class="sitetop"><span class="eyebrow"></span><h2></h2></div>
+      <div class="siteframe"><div class="bar"><i></i><i></i><i></i><span id="lfUrl"></span><em>Live site · type real numbers</em></div>
+      <div class="vp lf"><iframe id="lfIframe" title="SkillfulMeans ROI engine" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
+    </section></main>
 
   <aside id="notes" aria-label="Presenter notes"></aside>
 
@@ -587,6 +598,7 @@ const LINKS = [
   {key:'register', label:'Challenge registration', hint:'courses.skillfulmeans.life — Calm and Confident Mind', def:'https://courses.skillfulmeans.life/offers/JzJLjkKM/checkout'},
   {key:'challengeDay',label:'Challenge day page', hint:'courses.skillfulmeans.life/tn-challenge-day-3', def:'https://courses.skillfulmeans.life/tn-challenge-day-3'},
   {key:'challenge',label:'Challenge community', hint:'courses.skillfulmeans.life — discussion board', def:'https://courses.skillfulmeans.life/products/communities/v2/skillfulmeans/circle/bdbe36be-7f1f-4f42-afe6-6dd72885b422?type=forum'},
+  {key:'roi',      label:'ROI engine', hint:'skillfulmeans-roi-production.up.railway.app — the live calculator, embedded on the proof step', def:'https://skillfulmeans-roi-production.up.railway.app/#tool'},
   {key:'workshop', label:'Workshop recording or join link', hint:'Optional — not set', def:''},
   {key:'report',   label:'Sample Value of Investment report', hint:'Optional — not set', def:''},
 ];
@@ -859,27 +871,11 @@ const STEPS = [
   cue:'Ask which funding model they are on before you show options. Leading with the wrong card wastes the best answer.', time:'1\u20132 min'
 },
 {
-  act:'The proof', title:'One program, two mirrors', dark:true,
-  html:()=>`
-    <div class="top"><span class="eyebrow">The proof · ROI and VOI</span><span class="pill mauve">Predicted, then tracked</span></div>
-    <div class="body">
-      <div>
-        <h1>One program, <em>two mirrors.</em></h1>
-        <p class="lead">Every engagement is measured in both.</p>
-        <ul class="clean">
-          <li><span><b>ROI — the money mirror.</b> Claims, absence, turnover, productivity — crunched from the renewal report and headcount you already have.</span></li>
-          <li><span><b>VOI — the people mirror.</b> Stress, engagement, connection, psychological safety — measured by the same assessments ${who()} answers.</span></li>
-        </ul>
-        <p style="margin-top:14px">ROI tells you what happened to the dollars. VOI tells you why it happened — and why it keeps happening the year after.</p>
-      </div>
-      <div class="stats">
-        <div class="stat"><div class="big">$2.70</div><div class="lbl">returned per $1 in this deck's sample campaign — predicted from headcount, salary and participation design before kickoff</div><div class="src">Base case · always quoted inside the published ceiling — Deloitte UK (2024)</div></div>
-        <div class="stat"><div class="big coral">−28%</div><div class="lbl">perceived stress after a structured corporate mindfulness program — the size of shift VOI tracking is built to catch</div><div class="src">Aetna corporate MBSR pilot (2015)</div></div>
-      </div>
-    </div>
-    <div class="foot"><span>www.skillfulmeans.life</span><span>${pg()}</span></div>`,
-  notes:`<p><b>Say it plainly:</b> <em>"Everything you just saw produces two numbers. ROI is the money mirror — what happens to claims, absence and turnover. VOI is the people mirror — what happens to stress, engagement and connection. We predict both before you spend a dollar, and we track both with you after."</em></p><p>For a broker: <em>"ROI is what you bring to the renewal meeting. VOI is why the client renews with you."</em></p>`,
-  cue:'Never promise the number — promise the measurement. The range and the method are the credibility.', time:'1 min'
+  act:'The proof', title:'Run the numbers live', frame:'roi', live:'roi',
+  eyebrow:'The proof · ROI engine', h1:'Your numbers, not an industry average.',
+  url:'skillfulmeans-roi-production.up.railway.app',
+  notes:`<p><b>This is the live ROI engine, typed into on the call.</b> Ask for three numbers — headcount, average salary, what they think their carrier wellness fund is — and put them in while they watch. Then tick the four commitments one at a time and let the participation figure move; that is the argument for running it during work hours, made by the calculator rather than by you.</p><p>Read the three-number result out loud: <em>"Base case is what we'd plan against. Expected assumes every commitment above is met. Optimistic is the top of what the research supports — and nothing here exceeds the highest published return for a whole-workforce programme."</em></p><p><b>The results are behind an email unlock.</b> Unlock it once with your own email before the call so the numbers are visible when you get here. If it does not stay unlocked, ask whoever runs the engine for a presenter bypass. The <b>Open live</b> button opens the same page in its own tab if the frame ever misbehaves on a shared screen.</p><p>The frame keeps its state: go back a slide and return, and the numbers you typed are still there.</p>`,
+  cue:'Type their numbers, not yours. A prospect watching their own headcount produce a figure is the moment this slide exists for.', time:'3–4 min'
 },
 {
   act:'The proof', title:'Predicted before kickoff, measured after', dark:false,
@@ -960,7 +956,18 @@ function buildRail(){
 
 function render(){
   const s=STEPS[i];
-  if(s.site){
+  const lf=$('#liveframe');
+  if(s.frame){
+    slide.hidden=true; lf.hidden=false;
+    lf.querySelector('.eyebrow').textContent=s.eyebrow||''; lf.querySelector('h2').textContent=s.h1||'';
+    $('#lfUrl').textContent=s.url||'';
+    const fr=$('#lfIframe'), want=cfg[s.frame]||'';
+    if(fr.dataset.src!==want){ fr.src=want; fr.dataset.src=want; }
+    slide.innerHTML='';
+  }
+  else { lf.hidden=true; slide.hidden=false; }
+  if(s.frame){ /* nothing to draw in #slide */ }
+  else if(s.site){
     slide.className='slide sitepage';
     slide.innerHTML=`<div class="sitetop"><span class="eyebrow">${s.eyebrow}</span><h2>${s.h1}</h2></div>
       <div class="siteframe"><div class="bar"><i></i><i></i><i></i><span>${escapeHtml(s.url||'')}</span><em>Working demo · scroll and click</em></div>
